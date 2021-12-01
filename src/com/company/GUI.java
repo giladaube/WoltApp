@@ -2,7 +2,7 @@ package com.company;
 
 import com.company.pages.IPage;
 
-public class ConsoleGUI {
+public class GUI {
     private IPage page;
     public void show(){
         page.showPage();
