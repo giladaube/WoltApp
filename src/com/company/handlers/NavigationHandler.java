@@ -1,28 +1,28 @@
 package com.company.handlers;
 
-import com.company.GUI;
+import com.company.ConsoleGUI;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.Session;
 
 public class NavigationHandler {
-    private GUI gui;
+    private ConsoleGUI consoleGui;
     private Session session;
     private AFactoryPage factoryPage;
 
-    public NavigationHandler(GUI g, Session s, AFactoryPage f) {
-        gui = g;
+    public NavigationHandler(ConsoleGUI g, Session s, AFactoryPage f) {
+        consoleGui = g;
         session = s;
         factoryPage = f;
     }
 
     private void login() {
-        LoginHandler loginHandler = new LoginHandler(factoryPage, gui, session);
+        LoginHandler loginHandler = new LoginHandler(factoryPage, consoleGui, session);
         loginHandler.start();
     }
 
     private int menu() {
-        gui.setPage(factoryPage.getMenuPage());
-        gui.show();
+        consoleGui.setPage(factoryPage.getMenuPage());
+        consoleGui.show();
         return session.getMenuSelection();
     }
 

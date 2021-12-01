@@ -1,30 +1,30 @@
 package com.company.handlers;
 
-import com.company.GUI;
+import com.company.ConsoleGUI;
 import com.company.pages.IFactoryPageLogin;
 import com.company.sessions.ISessionLogin;
 
 public class LoginHandler {
     private IFactoryPageLogin factory;
-    private GUI gui;
+    private ConsoleGUI consoleGui;
     private ISessionLogin sessionLogin;
 
-    public LoginHandler(IFactoryPageLogin f, GUI g, ISessionLogin sg) {
+    public LoginHandler(IFactoryPageLogin f, ConsoleGUI g, ISessionLogin sg) {
         factory = f;
-        gui = g;
+        consoleGui = g;
         sessionLogin = sg;
     }
 
     public void start(){
-        gui.setPage(factory.getStartPage());
-        gui.show();
+        consoleGui.setPage(factory.getStartPage());
+        consoleGui.show();
 
         if(sessionLogin.isSignup()) {
-            gui.setPage(factory.getSignUpPage());
+            consoleGui.setPage(factory.getSignUpPage());
         } else {
-            gui.setPage(factory.getSignInPage());
+            consoleGui.setPage(factory.getSignInPage());
         }
-        gui.show();
+        consoleGui.show();
     }
 
 }
