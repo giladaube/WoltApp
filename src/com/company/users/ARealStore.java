@@ -42,6 +42,12 @@ public abstract class ARealStore extends User implements IRealStore {
     public IVirtualStore getVirtualStore() {  // remove ????
         return store;
     }
+
+    @Override
+    public List<IItem> getItems() {
+        return new ArrayList<>(items);  // give a (shallow) copy of our list
+    }
+
     @Override
     public abstract boolean addOrder(IOrder order); // return confirmation on new order
     @Override

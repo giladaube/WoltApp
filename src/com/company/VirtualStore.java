@@ -2,22 +2,19 @@ package com.company;
 
 import com.company.users.IRealStore;
 
-import java.util.ArrayList;
 import java.util.List;
 // VirtualStore is a reflection of a real store that is presented to the Costumer
 public class VirtualStore implements IVirtualStore {
     private String name;
-    private IRealStore realStore;
-    protected List<IItem> items;
+    private IRealStore realStore;   // ref to real store
 
     public VirtualStore(IRealStore s, String name) {
         this.name = name;
         realStore = s;
-        items = new ArrayList<>();
     }
     @Override
     public List<IItem> getItems() {
-        return new ArrayList<>(items);
+        return realStore.getItems();
     }
 
     @Override
