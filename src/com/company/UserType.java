@@ -2,7 +2,7 @@ package com.company;
 
 public enum UserType {
         CUSTOMER (1, "customer"),
-        SUPPLIER (2, "supplier");
+        STORE (2, "store");
 
         private int type;
         private String typeName;
