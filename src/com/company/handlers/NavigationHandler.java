@@ -29,7 +29,7 @@ public class NavigationHandler {
     public void start() {
         login();
         int userSelection = menu();
-        while (userSelection != 3) {
+        while (userSelection != 9) {
             // NEED TO USE A COMMAND PATTERN HERE, WHICH WILL RETURN A PAGE BASED ON USER SELECTION
             System.out.println("user selection is:" + userSelection);
             userSelection = menu();

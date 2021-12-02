@@ -13,8 +13,13 @@ public class StartPageConsole extends AStartPage {
     @Override
     public void showPage() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Hello");
-        System.out.println("To Sign-in press 1, to Sign-up press 2");
+        System.out.println("""
+                            Welcome!
+                            Please choose an option:
+                            [1] sign-in.
+                            [2] sign-up.
+                            [9] exit.
+                            """);
         int userSelection = input.nextInt();
         // set which option do the user want to do: signIn or signUp
         session.setIsSignUp(userSelection == 2);
