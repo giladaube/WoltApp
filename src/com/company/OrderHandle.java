@@ -8,7 +8,7 @@ public class OrderHandle {
 
     public void addOrder(IOrder order) {
         orders.add(order);
-        boolean confirmation = order.getStore().getSupplier().addOrder(order);
+        boolean confirmation = order.getStore().getRealStore().addOrder(order);
         // NEED TO NOTIFY CUSTOMER ABOUT CONFIRMATION
     }
 }

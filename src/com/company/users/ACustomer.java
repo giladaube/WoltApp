@@ -8,7 +8,7 @@ import java.util.List;
 public abstract class ACustomer extends User {
     private OrderHandle orderHandle;
 
-    public void addOrder(List<IItem> items, IStore store) {
+    public void addOrder(List<IItem> items, IVirtualStore store) {
         orderHandle.addOrder(store.newOrder(items));
     }
 }

@@ -1,18 +1,18 @@
 package com.company;
 
-import com.company.users.ISupplier;
+import com.company.users.IRealStore;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Store implements IStore {
+public class VirtualStore implements IVirtualStore {
     private String name;
-    private ISupplier supplier;
+    private IRealStore realStore;
     protected List<IItem> items;
 
-    public Store(ISupplier s, String name) {
+    public VirtualStore(IRealStore s, String name) {
         this.name = name;
-        supplier = s;
+        realStore = s;
         items = new ArrayList<>();
     }
     @Override
@@ -21,8 +21,8 @@ public class Store implements IStore {
     }
 
     @Override
-    public ISupplier getSupplier() {
-        return supplier;
+    public IRealStore getRealStore() {
+        return realStore;
     }
 
     @Override

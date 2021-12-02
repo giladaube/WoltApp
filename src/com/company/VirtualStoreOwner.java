@@ -1,12 +1,12 @@
 package com.company;
 
-import com.company.users.ISupplier;
+import com.company.users.IRealStore;
 
 import java.util.List;
 
-public class StoreOwner extends Store {
+public class VirtualStoreOwner extends VirtualStore {
 
-    public StoreOwner(ISupplier s, String name) {
+    public VirtualStoreOwner(IRealStore s, String name) {
         super(s, name);
     }
 

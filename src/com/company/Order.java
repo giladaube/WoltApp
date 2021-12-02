@@ -1,15 +1,13 @@
 package com.company;
 
-import com.company.users.ISupplier;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order implements IOrder {
     private List<IItem> items;
-    private IStore store;
+    private IVirtualStore store;
 
-    public Order(List<IItem> items, IStore store) {
+    public Order(List<IItem> items, IVirtualStore store) {
         this.items = items;
         this.store = store;
     }
@@ -20,7 +18,7 @@ public class Order implements IOrder {
     }
 
     @Override
-    public IStore getStore() {
+    public IVirtualStore getStore() {
         return store;
     }
 

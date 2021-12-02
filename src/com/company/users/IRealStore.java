@@ -1,12 +1,12 @@
 package com.company.users;
 
 import com.company.IOrder;
-import com.company.IStore;
+import com.company.IVirtualStore;
 
 import java.util.List;
 
-public interface ISupplier {
-    public List<IStore> getStores();
+public interface IRealStore {
+    public List<IVirtualStore> getVirtualStore();
     public boolean addOrder(IOrder order); // confirm new order
     public String getContact();
 
