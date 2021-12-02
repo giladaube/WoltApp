@@ -3,34 +3,44 @@ package com.company.users;
 import com.company.IItem;
 import com.company.IOrder;
 import com.company.IVirtualStore;
-import com.company.VirtualStoreOwner;
+import com.company.VirtualStore;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// Observed by a Virtual Store? Real Store doesn't need to know about VS presenting him (decoupling)
+// maybe doesn't need to be abstract?
 public abstract class ARealStore extends User implements IRealStore {
-    protected List<VirtualStoreOwner> stores;
+    protected String storeName;
+    protected String contactInfo;   // String for now, might be a class
+    protected VirtualStore store;   // remove ????
     protected List<IOrder> orders;
+    protected List<IItem> items;    // list of items the store is selling
 
-    public void addStore(String name) {
-        stores.add(new VirtualStoreOwner(this, name));
+    // CTOR - when opening a new Store
+    public ARealStore(String name, String contact){
+        storeName = name;
+        contactInfo = contact;
+        orders = new ArrayList<>();
+        items = new ArrayList<>();
+    }
+    // CTOR - when opening a saved Store from DB
+    public ARealStore(String name, String contact, List<IItem> itemList){
+        storeName = name;
+        contactInfo = contact;
+        orders = new ArrayList<>();
+        items = new ArrayList<>(itemList);
     }
 
-    public void addStore(String name, IItem item) {
-        VirtualStoreOwner s = new VirtualStoreOwner(this, name);
-        s.addItem(item);
-        stores.add(s);
+    public void addItem(IItem item){
+        items.add(item);
+        // notify list changed (+ when notified someone will have to save to db..)
     }
 
-    public void addStore(String name, List<IItem> items) {
-        VirtualStoreOwner s = new VirtualStoreOwner(this, name);
-        s.addItems(items);
-        stores.add(s);
-    }
 
     @Override
-    public List<IVirtualStore> getVirtualStore() {
-        return new ArrayList<IVirtualStore>(stores);
+    public IVirtualStore getVirtualStore() {  // remove ????
+        return store;
     }
     @Override
     public abstract boolean addOrder(IOrder order); // return confirmation on new order

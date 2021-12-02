@@ -4,6 +4,7 @@ import com.company.users.IRealStore;
 
 import java.util.List;
 
+// todo remove this class?
 public class VirtualStoreOwner extends VirtualStore {
 
     public VirtualStoreOwner(IRealStore s, String name) {
