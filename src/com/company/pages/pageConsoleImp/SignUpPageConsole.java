@@ -14,14 +14,14 @@ public class SignUpPageConsole extends ASignUpPage {
     @Override
     public void showPage() {
         Scanner input = new Scanner(System.in);
-        System.out.println("If you are a Customer please press 1, if you are a Supplier please press 2");
+        System.out.println("If you are a Customer please press 1, if you are a Store please press 2");
         String type = input.nextLine();
 
         // set user type (customer or supplier)
         if (type.equals("1"))
             session.setUserType(UserType.CUSTOMER);
         else
-            session.setUserType(UserType.SUPPLIER);
+            session.setUserType(UserType.STORE);
 
         System.out.println("Enter User name:");
         String name = input.nextLine();
