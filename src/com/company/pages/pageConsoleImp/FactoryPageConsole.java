@@ -4,17 +4,28 @@ import com.company.pages.*;
 import com.company.pages.abstractPages.*;
 import com.company.sessions.Session;
 import com.company.UserType;
-
+/**
+ * Concrete Console Page Factory - Creates Console Pages that a GUI will present
+ * @implNote these pages are interactive thus there's a need for an Obj to store User input
+ * */
 public class FactoryPageConsole extends AFactoryPage {
     private Session session;
 
-    public FactoryPageConsole(Session s){
-        this.session = s;
+    /**
+     * @param session - a Session obj to handle interaction with User through a page
+     * */
+    public FactoryPageConsole(Session session){
+        this.session = session;
     }
 
     @Override
     public AStartPage getStartPage() {
         return new StartPageConsole(session);
+    }
+
+    @Override
+    public ALoginPage getLoginPage() {
+        return new LoginConsolePage(session);
     }
 
     @Override
@@ -28,6 +39,11 @@ public class FactoryPageConsole extends AFactoryPage {
     }
 
     @Override
+    public ARedirectionPage getRedirectionPage() {
+        return new RedirectionConsolePage();
+    }
+
+    @Override
     public AMenuPage getMenuPage() {
         UserType type = session.getUserType();
         if (type.equals(UserType.CUSTOMER)) {
@@ -37,9 +53,15 @@ public class FactoryPageConsole extends AFactoryPage {
         }
     }
 
-    // NEED TO BE COMMAND
     @Override
-    public IPage getSelectedPage() {
-        return null;
+    public ASearchStore getSearchStorePage() {
+        return new SearchStoreConsolePage(session);
     }
+
+    @Override
+    public AOrdesPage getOrdersPage() {
+        return new OrdersConsolePage(session);
+    }
+
+
 }

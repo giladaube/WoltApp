@@ -4,5 +4,5 @@ import com.company.pages.abstractPages.AMenuPage;
 
 public interface IFactoryPageNavigation {
     public AMenuPage getMenuPage();
-    public IPage getSelectedPage();
+    public IPage getPage(Pages p);
 }

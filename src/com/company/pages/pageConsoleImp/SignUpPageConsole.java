@@ -3,11 +3,12 @@ package com.company.pages.pageConsoleImp;
 import com.company.sessions.ISessionLogin;
 import com.company.pages.abstractPages.ASignUpPage;
 import com.company.UserType;
+import com.company.sessions.Session;
 
 import java.util.Scanner;
 
 public class SignUpPageConsole extends ASignUpPage {
-    public SignUpPageConsole(ISessionLogin s) {
+    public SignUpPageConsole(Session s) {
         super(s);
     }
 

@@ -2,11 +2,12 @@ package com.company.pages.abstractPages;
 
 import com.company.pages.IPage;
 import com.company.sessions.ISessionMenu;
+import com.company.sessions.Session;
 
 public abstract class AMenuPage implements IPage {
-    protected ISessionMenu session;
+    protected Session session;
 
-    public AMenuPage(ISessionMenu s){
+    public AMenuPage(Session s){
         session = s;
     }
 }

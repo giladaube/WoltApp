@@ -3,41 +3,36 @@ package com.company.sessions;
 import com.company.UserType;
 import com.company.users.User;
 
-public class Session implements ISessionLogin, ISessionMenu {
-    private User currrentUser;
-    private boolean isSignup;
+public class Session {
+    private User currentUser;
+    private String tempPassword="";
     private int menuSelection;
 
     public Session(User u) {
-        currrentUser = u;
+        currentUser = u;
     }
 
-    //ISessionLogin
-    @Override
-    public void setIsSignUp(boolean a) {isSignup = a;}
-
-    @Override
     public void setUserId(int id) {
-        currrentUser.setId(id);
+        currentUser.setId(id);
     }
 
-    @Override
     public void setUserType(UserType type) {
-        currrentUser.setUserType(type);
+        currentUser.setUserType(type);
     }
 
-    @Override
-    public boolean isSignup() {
-        return isSignup;
-    }
-
-    @Override
     public void setMenuSelection(int s) {
         menuSelection = s;
     }
 
     public UserType getUserType() {
-        return currrentUser.getUserType();
+        return currentUser.getUserType();
     }
     public int getMenuSelection() {return menuSelection;}
+
+    public void setUserCredentials(String name, String password) {
+        currentUser.setUserName(name);
+        tempPassword = password;  // add pass in currentUser.setPass()
+    }
+    public String getTempPassword(){return tempPassword;}
+    public String getUserName(){return currentUser.getUserName();}
 }

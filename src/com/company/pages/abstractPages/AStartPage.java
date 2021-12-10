@@ -2,11 +2,12 @@ package com.company.pages.abstractPages;
 
 import com.company.pages.IPage;
 import com.company.sessions.ISessionLogin;
+import com.company.sessions.Session;
 
 public abstract class AStartPage implements IPage {
-    protected ISessionLogin session;
+    protected Session session;
 
-    public AStartPage(ISessionLogin s) {
+    public AStartPage(Session s) {
         session = s;
     }
 }

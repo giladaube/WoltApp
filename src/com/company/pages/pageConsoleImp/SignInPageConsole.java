@@ -3,11 +3,12 @@ package com.company.pages.pageConsoleImp;
 import com.company.pages.abstractPages.ASignInPage;
 import com.company.sessions.ISessionLogin;
 import com.company.UserType;
+import com.company.sessions.Session;
 
 import java.util.Scanner;
 
 public class SignInPageConsole extends ASignInPage {
-    public SignInPageConsole(ISessionLogin s) {
+    public SignInPageConsole(Session s) {
         super(s);
     }
 
@@ -18,9 +19,6 @@ public class SignInPageConsole extends ASignInPage {
         String name = input.nextLine();
         System.out.println("Enter Password:");
         String password = input.nextLine();
-
-        // verify given input with DB, and get userId and type
-        session.setUserId(1234);
-        session.setUserType(UserType.CUSTOMER);
+        session.setUserCredentials(name, password);
     }
 }

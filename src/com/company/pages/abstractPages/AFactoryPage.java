@@ -3,16 +3,19 @@ package com.company.pages.abstractPages;
 import com.company.pages.IFactoryPageLogin;
 import com.company.pages.IFactoryPageNavigation;
 import com.company.pages.IPage;
-
-public abstract class AFactoryPage implements IFactoryPageLogin, IFactoryPageNavigation {
-    @Override
+import com.company.pages.Pages;
+/**
+ * Abstract Page Factory -
+ * Derived Factories will implement different ways of implementing a concrete Page
+ * */
+public abstract class AFactoryPage {
     public abstract AStartPage getStartPage();
-    @Override
+    public abstract ALoginPage getLoginPage();
     public abstract ASignUpPage getSignUpPage();
-    @Override
     public abstract ASignInPage getSignInPage();
-    @Override
+    public abstract ARedirectionPage getRedirectionPage();
     public abstract AMenuPage getMenuPage();
-    @Override
-    public abstract IPage getSelectedPage();
+    public abstract ASearchStore getSearchStorePage();
+    public abstract AOrdesPage getOrdersPage();
+
 }

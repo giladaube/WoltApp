@@ -4,6 +4,7 @@ import com.company.handlers.NavigationHandler;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.pages.pageConsoleImp.FactoryPageConsole;
 import com.company.sessions.Session;
+import com.company.users.ARealStore;
 import com.company.users.User;
 
 public class Main {

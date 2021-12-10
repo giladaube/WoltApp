@@ -2,11 +2,12 @@ package com.company.pages.pageConsoleImp;
 
 import com.company.pages.abstractPages.AMenuPage;
 import com.company.sessions.ISessionMenu;
+import com.company.sessions.Session;
 
 import java.util.Scanner;
 
 public class MenuPageSupplierConsole extends AMenuPage {
-    public MenuPageSupplierConsole(ISessionMenu s) {
+    public MenuPageSupplierConsole(Session s) {
         super(s);
     }
 

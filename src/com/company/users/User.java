@@ -1,11 +1,25 @@
 package com.company.users;
 
+import com.company.Location;
 import com.company.UserType;
 
 public class User {
     private int id;
     private UserType userType;
+    private String name;
+    private Location location;
+    private String password;
 
+    public User(){}  // default CTOR
+
+    public User(String name, String pass, UserType type, Location loc){  // CTOR for creation
+        this.name = name;
+        this.userType = type;
+        this.location = loc;
+        this.password = pass;
+    }
+    public void setUserName(String name){ this.name = name;}
+    public String getUserName(){return name;}
     public void setId(int id) {
         this.id = id;
     }
