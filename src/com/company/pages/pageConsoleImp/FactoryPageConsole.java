@@ -1,6 +1,5 @@
 package com.company.pages.pageConsoleImp;
 
-import com.company.pages.*;
 import com.company.pages.abstractPages.*;
 import com.company.sessions.Session;
 import com.company.UserType;
@@ -54,13 +53,23 @@ public class FactoryPageConsole extends AFactoryPage {
     }
 
     @Override
-    public ASearchStore getSearchStorePage() {
+    public ASearchStorePage getSearchStorePage() {
         return new SearchStoreConsolePage(session);
     }
 
     @Override
     public AOrdesPage getOrdersPage() {
         return new OrdersConsolePage(session);
+    }
+
+    @Override
+    public AErrorPage getErrorPage() {
+        return new ErrorPageConsole(session);
+    }
+
+    @Override
+    public ASearchResultsPage getSearchResultsPage() {
+        return new SearchResultsConsolePage(session);
     }
 
 

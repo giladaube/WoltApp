@@ -17,9 +17,9 @@ public class StartPageConsole extends AStartPage {
         System.out.println("""
                             Welcome!
                             Are you a Customer / Store:
-                            [1] Customer.
-                            [2] Store.
-                            [9] Exit.""");
+                            [0] Customer.
+                            [1] Store.
+                            [10] Exit.""");
         int userSelection = input.nextInt();
         session.setMenuSelection(userSelection);
 
