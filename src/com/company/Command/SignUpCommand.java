@@ -29,7 +29,6 @@ public class SignUpCommand implements ICommand {
         try {
             User user = db.checkUserExists(session.getUserName(), session.getTempPassword());
             if(user != null){
-                // session.setUser();
                 commands.get(Pages.MAIN_MENU).execute();
             }
             else
