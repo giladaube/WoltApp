@@ -2,6 +2,7 @@ package com.company.sessions;
 
 import com.company.UserType;
 import com.company.users.User;
+import com.company.pages.Pages;
 
 public class Session {
     private User currentUser;

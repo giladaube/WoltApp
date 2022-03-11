@@ -12,5 +12,5 @@ public enum Pages {
     SEARCH_RESULTS,
     STORE_MENU,
     EXIT,
-    ;
+    ERROR,
 }

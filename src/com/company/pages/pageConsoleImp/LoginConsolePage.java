@@ -15,9 +15,9 @@ public class LoginConsolePage extends ALoginPage {
         Scanner input = new Scanner(System.in);
         System.out.printf("""
                 Welcome %s!
-                [1] Sign-in.
-                [2] Sign-up.
-                [9] Back To Start.
+                [2] Sign-in.
+                [3] Sign-up.
+                [0] Back To Start.
                 """, session.getUserType());
         int userSelection = input.nextInt();
         session.setMenuSelection(userSelection);

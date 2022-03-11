@@ -1,11 +1,11 @@
 package com.company.pages.pageConsoleImp;
 
-import com.company.pages.abstractPages.ASearchStore;
+import com.company.pages.abstractPages.ASearchStorePage;
 import com.company.sessions.Session;
 
 import java.util.Scanner;
 
-public class SearchStoreConsolePage extends ASearchStore {
+public class SearchStoreConsolePage extends ASearchStorePage {
     public SearchStoreConsolePage(Session session) {
         super(session);
     }

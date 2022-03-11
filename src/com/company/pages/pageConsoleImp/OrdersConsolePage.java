@@ -15,7 +15,7 @@ public class OrdersConsolePage extends AOrdesPage {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Showing user's Orders..");
-        System.out.println("[9] Back to Main Menu");
+        System.out.println("[10] Back to Main Menu");
 
         int selection = input.nextInt();
         session.setMenuSelection(selection);
