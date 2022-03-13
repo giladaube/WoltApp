@@ -5,30 +5,37 @@ import com.company.GUI;
 import com.company.IDatabase;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
+import com.company.sessions.ISession;
 import com.company.sessions.Session;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class StoreNavigationHandler {
+public class StoreNavigationHandler implements INavigation {
     private GUI gui;
-    private Session session;
+    private ISession session;
     private AFactoryPage factoryPage;
     private IDatabase db;
     private Map<Pages, ICommand> commands;
-    public StoreNavigationHandler(GUI gui, Session session, AFactoryPage factoryPage, IDatabase db) {
+    private FactoryCommand factoryCommand;
+    public StoreNavigationHandler(GUI gui, ISession session, AFactoryPage factoryPage, IDatabase db, FactoryCommand fc) {
         this.gui = gui;
         this.session = session;
         this.factoryPage = factoryPage;
         this.db = db;
+        factoryCommand = fc;
         initCommands();
     }
 
     private void initCommands() {
         commands = new HashMap<>();
+        commands.put(Pages.MAIN_MENU, factoryCommand.gerStoreMenuCommand(commands));
+        commands.put(Pages.EXIT, factoryCommand.getExitCommand());
+        commands.put(Pages.ERROR, factoryCommand.getErrorCommand(commands));
     }
 
+    @Override
     public void start() {
-
+        commands.get(Pages.MAIN_MENU).execute();
     }
 }

@@ -32,6 +32,8 @@ public class FileDB implements IDatabase{
 
     @Override
     public User checkUserExists(String name, String pass) {
+        // need to really check if user exist (customer and store) and return that user if it does.
+        // if it's not, return null.
         return new User();
 //        int index = 0;
 //        String name = user.getUserName();
@@ -56,4 +58,12 @@ public class FileDB implements IDatabase{
     public List<IRealStore> getStores() {
         return null;
     }
+
+    @Override
+    public int addOrder(IOrder order) {
+        // save given order in the db and return it's id.
+        return 0;
+    }
+
+
 }

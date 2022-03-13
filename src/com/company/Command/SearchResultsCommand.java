@@ -3,19 +3,18 @@ package com.company.Command;
 import com.company.GUI;
 import com.company.IDatabase;
 import com.company.pages.Pages;
-import com.company.pages.Search;
 import com.company.pages.abstractPages.AFactoryPage;
-import com.company.sessions.Session;
+import com.company.sessions.ISession;
 
 import java.util.Map;
 
 public class SearchResultsCommand implements ICommand {
     private GUI gui;
-    private Session session;
+    private ISession session;
     private AFactoryPage factoryPage;
     private Map<Pages, ICommand> commands;
     private IDatabase db;
-    public SearchResultsCommand(GUI g, Session s, AFactoryPage f, Map<Pages, ICommand> c, IDatabase d) {
+    public SearchResultsCommand(GUI g, ISession s, AFactoryPage f, Map<Pages, ICommand> c, IDatabase d) {
         gui = g;
         session = s;
         factoryPage = f;
@@ -27,10 +26,18 @@ public class SearchResultsCommand implements ICommand {
         gui.setPage(factoryPage.getSearchResultsPage());
         gui.show();
         try {
-            if (Pages.values()[session.getMenuSelection()] == Pages.MAIN_MENU) {
-                commands.get(Pages.MAIN_MENU).execute();
+            session.setPermissions(this);
+            switch(Pages.values()[session.getMenuSelection()]){
+                case MAIN_MENU -> commands.get(Pages.MAIN_MENU).execute();
+                case SEARCH_STORES_BY -> commands.get(Pages.SEARCH_STORES_BY).execute();
+                default -> {
+                    session.setErrorMessage("Wrong input");
+                    commands.get(Pages.ERROR).execute();
+                    execute();
+                }
             }
         } catch (Exception e) {
+            session.setErrorMessage(e.getMessage());
             commands.get(Pages.ERROR).execute();
             execute();
         }

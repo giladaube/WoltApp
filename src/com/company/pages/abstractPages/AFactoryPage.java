@@ -9,7 +9,6 @@ public abstract class AFactoryPage {
     public abstract ALoginPage getLoginPage();
     public abstract ASignUpPage getSignUpPage();
     public abstract ASignInPage getSignInPage();
-    public abstract ARedirectionPage getRedirectionPage();
     public abstract AMenuPage getMenuPage();
     public abstract ASearchStorePage getSearchStorePage();
     public abstract AOrdesPage getOrdersPage();

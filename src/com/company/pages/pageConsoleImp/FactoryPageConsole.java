@@ -1,19 +1,19 @@
 package com.company.pages.pageConsoleImp;
 
 import com.company.pages.abstractPages.*;
-import com.company.sessions.Session;
+import com.company.sessions.ISession;
 import com.company.UserType;
 /**
  * Concrete Console Page Factory - Creates Console Pages that a GUI will present
  * @implNote these pages are interactive thus there's a need for an Obj to store User input
  * */
 public class FactoryPageConsole extends AFactoryPage {
-    private Session session;
+    private ISession session;
 
     /**
      * @param session - a Session obj to handle interaction with User through a page
      * */
-    public FactoryPageConsole(Session session){
+    public FactoryPageConsole(ISession session){
         this.session = session;
     }
 
@@ -38,17 +38,12 @@ public class FactoryPageConsole extends AFactoryPage {
     }
 
     @Override
-    public ARedirectionPage getRedirectionPage() {
-        return new RedirectionConsolePage();
-    }
-
-    @Override
     public AMenuPage getMenuPage() {
         UserType type = session.getUserType();
         if (type.equals(UserType.CUSTOMER)) {
             return new MenuPageCustomerConsole(session);
         } else {
-            return new MenuPageSupplierConsole(session);
+            return new MenuPageStoreConsole(session);
         }
     }
 

@@ -10,6 +10,8 @@ import java.util.List;
 
 // Observed by a Virtual Store? Real Store doesn't need to know about VS presenting him (decoupling)
 // maybe doesn't need to be abstract?
+
+// After implement everything here, please go back and create new RealStore at Session class, on setUserType()
 public abstract class ARealStore extends User implements IRealStore {
     protected String storeName;
     protected String contactInfo;   // String for now, might be a class

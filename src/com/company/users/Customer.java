@@ -12,8 +12,10 @@ public class Customer extends User {
     }
     public Customer(String name, String pass){
         super(name, pass, UserType.CUSTOMER, Location.generateRandomLocation());
+        orderHandle = new OrderHandle();
     }
     public void addOrder(List<IItem> items, IVirtualStore store) {
         orderHandle.addOrder(store.newOrder(items));
     }
+    public List<IOrder> getOrders(){return orderHandle.getOrders();}
 }

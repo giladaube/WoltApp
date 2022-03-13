@@ -20,10 +20,15 @@ public class User {
     }
     public void setUserName(String name){ this.name = name;}
     public String getUserName(){return name;}
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getPassword(){return password;}
+
     public void setId(int id) {
         this.id = id;
     }
-
     public int getId() {
         return id;
     }
@@ -31,7 +36,6 @@ public class User {
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
-
     public UserType getUserType() {
         return userType;
     }

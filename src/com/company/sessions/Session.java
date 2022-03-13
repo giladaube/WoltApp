@@ -1,39 +1,109 @@
 package com.company.sessions;
-
+import com.company.IItem;
+import com.company.IOrder;
 import com.company.UserType;
+import com.company.users.ARealStore;
+import com.company.users.Customer;
+import com.company.users.IRealStore;
 import com.company.users.User;
-import com.company.pages.Pages;
+import java.util.List;
 
-public class Session {
-    private User currentUser;
-    private String tempPassword="";
-    private int menuSelection;
+public class Session implements ISession {
+    private ISessionCustomer sessionCustomer;
+    private ISessionError sessionError;
+    private ISessionMenu sessionMenu;
+    private ISessionStore sessionStore;
+    private ISessionUser sessionUser;
 
-    public Session(User u) {
-        currentUser = u;
+    public Session() {
+        sessionUser = new SessionUser();
+        sessionMenu = new SessionMenu();
+        sessionError = new SessionError();
     }
 
-    public void setUserId(int id) {
-        currentUser.setId(id);
+    @Override
+    public void setErrorMessage(String msg) {
+        sessionError.setErrorMessage(msg);
     }
 
-    public void setUserType(UserType type) {
-        currentUser.setUserType(type);
+    @Override
+    public String getErrorMessage() {
+        return sessionError.getErrorMessage();
     }
 
+    @Override
     public void setMenuSelection(int s) {
-        menuSelection = s;
+        sessionMenu.setMenuSelection(s);
     }
 
+    @Override
+    public int getMenuSelection() {
+        return sessionMenu.getMenuSelection();
+    }
+
+    @Override
+    public User getUser() {
+        return sessionUser.getUser();
+    }
+
+    @Override
+    public void setUserType(UserType type) {
+        sessionUser.setUserType(type);
+        if (type == UserType.CUSTOMER) {
+            sessionCustomer = new SessionCustomer(new Customer(sessionUser.getUserName(), sessionUser.getTempPassword()));
+        }
+//        else {
+//            sessionStore = new SessionStore(new ARealStore(sessionUser.getUserName(), sessionUser.getTempPassword()));
+//        }
+    }
+
+    @Override
     public UserType getUserType() {
-        return currentUser.getUserType();
+        return sessionUser.getUserType();
     }
-    public int getMenuSelection() {return menuSelection;}
 
+    @Override
     public void setUserCredentials(String name, String password) {
-        currentUser.setUserName(name);
-        tempPassword = password;  // add pass in currentUser.setPass()
+        sessionUser.setUserCredentials(name, password);
     }
-    public String getTempPassword(){return tempPassword;}
-    public String getUserName(){return currentUser.getUserName();}
+
+    @Override
+    public void setUserId(int id) {
+        sessionUser.setUserId(id);
+    }
+
+    @Override
+    public String getTempPassword() {
+        return sessionUser.getTempPassword();
+    }
+
+    @Override
+    public String getUserName() {
+        return sessionUser.getUserName();
+    }
+
+    @Override
+    public List<IOrder> getOrders() {
+        try {
+            return sessionCustomer.getOrders();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public List<IItem> getItems() {
+        try {
+            return sessionStore.getItems();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public void setPermissions(Object o) {
+        // don't do anything
+    }
 }

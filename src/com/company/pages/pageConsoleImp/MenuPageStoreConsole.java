@@ -4,8 +4,8 @@ import com.company.sessions.ISession;
 
 import java.util.Scanner;
 
-public class MenuPageCustomerConsole extends AMenuPage {
-    public MenuPageCustomerConsole(ISession s) {
+public class MenuPageStoreConsole extends AMenuPage {
+    public MenuPageStoreConsole(ISession s) {
         super(s);
     }
 
@@ -15,11 +15,10 @@ public class MenuPageCustomerConsole extends AMenuPage {
         System.out.printf("""
                             Hello %s,
                             There are several action you can do. Please enter a number based on your selection:
-                            [6] Search store by..
-                            [7] Show current orders.
+                            [1] Search an item.
+                            [2] See your on-going orders.
                             [10] Logout.
                             """, session.getUserName());
-
         int selection = input.nextInt();
 
         // set user selection

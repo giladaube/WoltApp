@@ -9,4 +9,5 @@ public interface IDatabase {
     User checkUserExists(String name, String password);
     void addUser(User user, String password);
     List<IRealStore> getStores();
+    int addOrder(IOrder order);
 }

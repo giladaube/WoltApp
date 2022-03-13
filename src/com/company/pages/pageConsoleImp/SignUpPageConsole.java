@@ -1,35 +1,27 @@
 package com.company.pages.pageConsoleImp;
-
-import com.company.sessions.ISessionLogin;
 import com.company.pages.abstractPages.ASignUpPage;
-import com.company.UserType;
-import com.company.sessions.Session;
+import com.company.sessions.ISession;
 
 import java.util.Scanner;
 
 public class SignUpPageConsole extends ASignUpPage {
-    public SignUpPageConsole(Session s) {
+    public SignUpPageConsole(ISession s) {
         super(s);
     }
 
     @Override
     public void showPage() {
         Scanner input = new Scanner(System.in);
-        System.out.println("If you are a Customer please press 1, if you are a Store please press 2");
-        String type = input.nextLine();
-
-        // set user type (customer or supplier)
-        if (type.equals("1"))
-            session.setUserType(UserType.CUSTOMER);
-        else
-            session.setUserType(UserType.STORE);
+        System.out.print("""
+                Sign up:
+                In order to Sign up, please provide the following information:
+                """);
 
         System.out.println("Enter User name:");
         String name = input.nextLine();
         System.out.println("Enter Password:");
         String password = input.nextLine();
 
-        // add given input to DB, get in return userId.
-        session.setUserId(1234);
+        session.setUserCredentials(name, password);
     }
 }

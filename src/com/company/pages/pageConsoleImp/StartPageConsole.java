@@ -1,13 +1,12 @@
 package com.company.pages.pageConsoleImp;
 
 import com.company.pages.abstractPages.AStartPage;
-import com.company.sessions.ISessionLogin;
-import com.company.sessions.Session;
+import com.company.sessions.ISession;
 
 import java.util.Scanner;
 
 public class StartPageConsole extends AStartPage {
-    public StartPageConsole(Session s) {
+    public StartPageConsole(ISession s) {
         super(s);
     }
 
@@ -22,8 +21,5 @@ public class StartPageConsole extends AStartPage {
                             [10] Exit.""");
         int userSelection = input.nextInt();
         session.setMenuSelection(userSelection);
-
-        // set which option do the user want to do: signIn or signUp
-        // session.setIsSignUp(userSelection == 2);
     }
 }
