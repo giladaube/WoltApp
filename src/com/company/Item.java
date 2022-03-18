@@ -12,16 +12,16 @@ public class Item implements IItem {
     }
     @Override
     public String getItemName() {
-        return null;
+        return name;
     }
 
     @Override
     public String getItemDescription() {
-        return null;
+        return description;
     }
 
     @Override
     public double getPrice() {
-        return 0;
+        return price;
     }
 }

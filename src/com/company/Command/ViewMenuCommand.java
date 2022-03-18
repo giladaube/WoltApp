@@ -32,24 +32,20 @@ public class ViewMenuCommand implements ICommand{
         gui.show();
         try {
             session.setPermissions(this);
-//            if (Pages.values()[session.getMenuSelection()] == Pages.MAIN_MENU) {
-//                commands.get(Pages.MAIN_MENU).execute();
-//            }
             int i = session.getMenuSelection();
-            IItem anItem = session.getPickedStore().getItems().get(i);
-//            new Order();
-            switch (Search.values()[session.getMenuSelection()]) {
-
+            List<IItem> storeItems = session.getPickedStore().getItems();
+            List<IItem> pickedItems = new ArrayList<>();
+            while(i != storeItems.size() && i != storeItems.size()+1){
+                pickedItems.add(storeItems.get(i));
+                gui.setPage(factoryPage.getSubMenuViewPage());  // added such that we can grab multi items
+                gui.show();
+                session.setPermissions(this);
+                i = session.getMenuSelection();
             }
-            Customer c = (Customer)session.getUser();
-            List<IItem> pickedItems = new ArrayList<>(){
-                {
-                    add(new Item("Texas's choice", "200g burger", 60));
-                    add(new Item("Big One", "300g burger", 70));
-                    add(new Item("Vegan burger", "vegan burger", 50));
-                }
-            };
-            c.addOrder(pickedItems, session.getPickedStore());
+            if(i == storeItems.size()) {  // user entered DONE option -> send order and then back to main menu
+                Customer c = (Customer)session.getUser(); // we know for a fact that this user is customer
+                c.addOrder(pickedItems, session.getPickedStore());
+            }
             System.out.println("AFTER ADD ORDER");
             commands.get(Pages.MAIN_MENU).execute();
         } catch (Exception e) {

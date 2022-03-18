@@ -18,4 +18,5 @@ public abstract class AFactoryPage {
     public abstract ASearchResultsPage getSearchResultsPage();
 
     public abstract AMenuViewPage getMenuViewPage();
+    public abstract AMenuViewPage getSubMenuViewPage();
 }

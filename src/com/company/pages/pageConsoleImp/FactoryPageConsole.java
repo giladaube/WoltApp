@@ -71,6 +71,10 @@ public class FactoryPageConsole extends AFactoryPage {
     public AMenuViewPage getMenuViewPage() {
         return new ViewMenuPageConsole(session);
     }
+    @Override
+    public AMenuViewPage getSubMenuViewPage() {
+        return new SubViewMenuPageConsole(session);
+    }
 
 
 }
