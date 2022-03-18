@@ -7,6 +7,9 @@ import com.company.pages.abstractPages.AFactoryPage;
 import com.company.pages.pageConsoleImp.FactoryPageConsole;
 import com.company.sessions.ISession;
 import com.company.sessions.SessionProxy;
+import com.company.users.Customer;
+
+import java.util.List;
 
 public class Main {
 
@@ -18,5 +21,8 @@ public class Main {
         INavigation navigationHandler = new NavigationHandler(gui, session, factory, factoryCommand);
         navigationHandler.start();
 
+//        IDatabase db = FileDB.getDatabase();
+//        List<Customer> lc = db.getCustomers();
+//        System.out.println(lc.size());
     }
 }

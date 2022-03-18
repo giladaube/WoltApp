@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface IVirtualStore {
     List<IItem> getItems();
-    IRealStore getRealStore();
+    String getStoreName();
     IOrder newOrder(List<IItem> items);
 
+    boolean addOrder(IOrder order);
 }

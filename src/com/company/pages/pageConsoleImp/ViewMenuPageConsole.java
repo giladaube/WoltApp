@@ -18,7 +18,7 @@ public class ViewMenuPageConsole extends AMenuViewPage {
         int i = 0;
         System.out.printf("""
                             Welcome to %s
-                            """, session.getPickedStore().getRealStore().getStoreName());
+                            """, session.getPickedStore().getStoreName());
         System.out.println("You can chose as much items as you want, simply pick a number and hit Enter:");
         System.out.println("Here is our menu:");
         System.out.println("-----------------------------------");

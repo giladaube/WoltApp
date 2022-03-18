@@ -16,12 +16,17 @@ public class VirtualStore implements IVirtualStore {
     }
 
     @Override
-    public IRealStore getRealStore() {
-        return realStore;
+    public String getStoreName() {
+        return realStore.getStoreName();
     }
 
     @Override
     public IOrder newOrder(List<IItem> items) {
         return new Order(items, this);
+    }
+
+    @Override
+    public boolean addOrder(IOrder order) {
+        return realStore.addOrder(order);
     }
 }

@@ -16,11 +16,11 @@ public class SearchResultsConsolePage extends ASearchResultsPage {
         Scanner input = new Scanner(System.in);
         IVirtualStore a = session.getPickedStore();
         System.out.printf("""
-                            Store name %s,
+                            Best Store for you --> %s,
                             [12] Show Store menu.
                             [4] Back to Main Menu.
                             [6] Change sort method.
-                            """, a.getRealStore().getStoreName());
+                            """, a.getStoreName());
         int selection = input.nextInt();
         session.setMenuSelection(selection);
     }

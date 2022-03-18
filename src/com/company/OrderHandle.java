@@ -10,7 +10,7 @@ public class OrderHandle {
         // order.setOrderNumber(db.addOrder(order));
         orders.add(order);
 
-        boolean confirmation = order.getStore().getRealStore().addOrder(order);
+        boolean confirmation = order.getStore().addOrder(order);
         // NEED TO NOTIFY CUSTOMER ABOUT CONFIRMATION
     }
 

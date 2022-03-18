@@ -21,8 +21,8 @@ import static java.lang.System.exit;
 public class FileDB implements IDatabase{
     private final String customersFile = "src\\com\\company\\db\\Customers.json";
     private final String storesFile = "src\\com\\company\\db\\Stores.json";
-    private FileReader reader = null;
-    private FileWriter writer = null;
+    private Reader reader = null;
+    private Writer writer = null;
 
     // Singleton class
     private FileDB(){
@@ -51,41 +51,19 @@ public class FileDB implements IDatabase{
 
     @Override
     public void saveUser(User user) {
-        if(user.getUserType() == UserType.CUSTOMER)
-            save(getCustomers().add((Customer) user), customersFile);
+        if(user.getUserType() == UserType.CUSTOMER){
+            List<Customer> d = getCustomers();
+            Customer c = (Customer) user;
+            d.add(c);
+            save(d, customersFile);
+        }
         else
             save(getStores().add((ARealStore) user), storesFile);
-    }
-
-    private List<Customer> getCustomers(){
-        Customer[] customers = getUsers(Customer[].class, customersFile);
-        assert customers != null;
-        return Arrays.asList(customers);
-    }
-
-    private <T> T[] getUsers(Class<T[]> classOfT, String filename){
-        try {
-            reader = new FileReader(filename);
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            T[] users = gson.fromJson(reader, classOfT);
-            reader.close();
-            return users;
-        } catch (IOException e) {
-            e.printStackTrace();
-            exit(-1);  // in-case file doesn't exist we will terminate the program
-            return null;
-        }
     }
 
     @Override
     public void deleteUser(User user){
         // not implemented..
-    }
-
-    public List<ARealStore> getStores() {
-        ARealStore[] stores = getUsers(ARealStore[].class, storesFile);
-        assert stores != null;
-        return Arrays.asList(stores);
     }
 
     @Override
@@ -106,6 +84,32 @@ public class FileDB implements IDatabase{
                 bestStore = curStore;
         }
         return bestStore;
+    }
+
+    public List<Customer> getCustomers(){
+        Customer[] customers = getUsers(Customer[].class, customersFile);
+        assert customers != null;
+        return new ArrayList<>(Arrays.asList(customers));
+    }
+
+    private <T> T[] getUsers(Class<T[]> classOfT, String filename){
+        try {
+            reader = new FileReader(filename);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            T[] users = gson.fromJson(reader, classOfT);
+            reader.close();
+            return users;
+        } catch (IOException e) {
+            e.printStackTrace();
+            exit(-1);  // in-case file doesn't exist we will terminate the program
+            return null;
+        }
+    }
+
+    public List<ARealStore> getStores() {
+        ARealStore[] stores = getUsers(ARealStore[].class, storesFile);
+        assert stores != null;
+        return new ArrayList<>(Arrays.asList(stores));
     }
 
     private void initCustomers(String fileName){
