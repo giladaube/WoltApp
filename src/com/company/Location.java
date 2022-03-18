@@ -1,4 +1,6 @@
 package com.company;
+
+
 /**
  * class representing a (x,y) coordinate on map
  * */
@@ -17,6 +19,11 @@ public class Location {
     public int getY() {
         return y;
     }
+
+    public double distance(Location other){
+        return Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2));
+    }
+
     /** generate random location between [0,10] */
     public static Location generateRandomLocation(){
         int max=10, min=0;

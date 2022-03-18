@@ -6,10 +6,12 @@ import com.company.Command.SignUpCommand;
 import com.company.Command.StartCommand;
 import com.company.IItem;
 import com.company.IOrder;
+import com.company.IVirtualStore;
 import com.company.UserType;
 import com.company.pages.IPage;
 import com.company.pages.abstractPages.ASignInPage;
 import com.company.pages.abstractPages.ASignUpPage;
+import com.company.users.ARealStore;
 import com.company.users.User;
 
 import java.util.List;
@@ -31,6 +33,17 @@ public class SessionProxy implements ISession{
         if (session.getUser().getUserType() == UserType.CUSTOMER)
             return session.getOrders();
         return null;
+    }
+
+    // only a customer should have access to this method
+    @Override
+    public IVirtualStore getPickedStore() {
+        return session.getPickedStore();
+    }
+
+    @Override
+    public void setPickedStore(IVirtualStore store) {
+        session.setPickedStore(store);
     }
 
     // anyone should have access to Errors
@@ -67,6 +80,11 @@ public class SessionProxy implements ISession{
         if (session.getUser().getUserType() == UserType.STORE)
             return session.getItems();
         return null;
+    }
+
+    @Override
+    public void setUser(User u) {
+        session.setUser(u);
     }
 
     @Override

@@ -1,9 +1,6 @@
 package com.company.users;
 
-import com.company.IItem;
-import com.company.IOrder;
-import com.company.IVirtualStore;
-import com.company.VirtualStore;
+import com.company.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,29 +9,25 @@ import java.util.List;
 // maybe doesn't need to be abstract?
 
 // After implement everything here, please go back and create new RealStore at Session class, on setUserType()
-public abstract class ARealStore extends User implements IRealStore {
+public class ARealStore extends User implements IRealStore {
     protected String storeName;
     protected String contactInfo;   // String for now, might be a class
-    protected VirtualStore store;   // remove ????
+    protected VirtualStore virtualStore;   // remove ????
     protected List<IOrder> orders;
-    protected List<IItem> items;    // list of items the store is selling
+    protected List<Item> items;    // list of items the store is selling
+    protected double rating;
 
-    // CTOR - when opening a new Store
-    public ARealStore(String name, String contact){
-        storeName = name;
-        contactInfo = contact;
-        orders = new ArrayList<>();
-        items = new ArrayList<>();
-    }
-    // CTOR - when opening a saved Store from DB
-    public ARealStore(String name, String contact, List<IItem> itemList){
-        storeName = name;
+    // CTOR
+    public ARealStore(String userName, String password, String storeName, String contact, List<Item> itemList, double rate){
+        super(userName, password, UserType.STORE, Location.generateRandomLocation());
+        this.storeName = storeName;
         contactInfo = contact;
         orders = new ArrayList<>();
         items = new ArrayList<>(itemList);
+        rating = rate;
     }
 
-    public void addItem(IItem item){
+    public void addItem(Item item){
         items.add(item);
         // notify list changed (+ when notified someone will have to save to db..)
     }
@@ -42,7 +35,7 @@ public abstract class ARealStore extends User implements IRealStore {
 
     @Override
     public IVirtualStore getVirtualStore() {  // remove ????
-        return store;
+        return virtualStore;
     }
 
     @Override
@@ -51,7 +44,19 @@ public abstract class ARealStore extends User implements IRealStore {
     }
 
     @Override
-    public abstract boolean addOrder(IOrder order); // return confirmation on new order
+    public boolean addOrder(IOrder order){
+        return true;
+    } // return confirmation on new order
     @Override
-    public abstract String getContact();
+    public String getContact(){
+        return this.contactInfo;
+    }
+    @Override
+    public double getRating(){return rating;}
+    @Override
+    public String getStoreName(){return storeName;}
+
+    public void setVirtualStore(ARealStore realStore) {
+        virtualStore = new VirtualStore(realStore);
+    }
 }

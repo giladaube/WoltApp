@@ -54,7 +54,7 @@ public class FactoryCommand {
     }
 
     public ICommand getSearchStoresBy(Map<Pages, ICommand> commands) {
-        return new SearchStoreCommand(gui, session, factoryPage, commands);
+        return new SearchStoreCommand(gui, session, factoryPage, commands, db);
     }
 
     public ICommand getSearchResults(Map<Pages, ICommand> commands) {
@@ -65,7 +65,10 @@ public class FactoryCommand {
         return new OrdersCommand(gui, session, factoryPage, commands, db);
     }
 
-    public ICommand gerStoreMenuCommand(Map<Pages, ICommand> commands) {
+    public ICommand getStoreMenuCommand(Map<Pages, ICommand> commands) {
         return new StoreMenuCommand(gui, session, factoryPage, commands);
+    }
+    public ICommand getMenuViewCommand(Map<Pages, ICommand> commands) {
+        return new MenuViewCommand(gui, session, factoryPage, commands, db);
     }
 }

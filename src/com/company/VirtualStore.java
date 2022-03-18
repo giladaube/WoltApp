@@ -5,11 +5,9 @@ import com.company.users.IRealStore;
 import java.util.List;
 // VirtualStore is a reflection of a real store that is presented to the Costumer
 public class VirtualStore implements IVirtualStore {
-    private String name;
     private IRealStore realStore;   // ref to real store
 
-    public VirtualStore(IRealStore s, String name) {
-        this.name = name;
+    public VirtualStore(IRealStore s) {
         realStore = s;
     }
     @Override

@@ -30,7 +30,8 @@ public class SignInCommand implements ICommand {
             session.setPermissions(this);
             User user = db.checkUserExists(session.getUserName(), session.getTempPassword());
             if(user != null){
-                session.setUserId(user.getId());
+                session.setUser(user);
+                session.setUserId(user.getId()); // remove?
                 commands.get(Pages.MAIN_MENU).execute();
             }
             else {

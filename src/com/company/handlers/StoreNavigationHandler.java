@@ -6,7 +6,6 @@ import com.company.IDatabase;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.ISession;
-import com.company.sessions.Session;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +28,7 @@ public class StoreNavigationHandler implements INavigation {
 
     private void initCommands() {
         commands = new HashMap<>();
-        commands.put(Pages.MAIN_MENU, factoryCommand.gerStoreMenuCommand(commands));
+        commands.put(Pages.MAIN_MENU, factoryCommand.getStoreMenuCommand(commands));
         commands.put(Pages.EXIT, factoryCommand.getExitCommand());
         commands.put(Pages.ERROR, factoryCommand.getErrorCommand(commands));
     }

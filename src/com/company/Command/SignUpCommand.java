@@ -1,12 +1,15 @@
 package com.company.Command;
 
-import com.company.GUI;
-import com.company.IDatabase;
+import com.company.*;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.ISession;
+import com.company.users.ARealStore;
+import com.company.users.Customer;
 import com.company.users.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class SignUpCommand implements ICommand {
@@ -30,8 +33,18 @@ public class SignUpCommand implements ICommand {
             session.setPermissions(this);
             User user = db.checkUserExists(session.getUserName(), session.getTempPassword());
             if (user == null) {
+                User aUser;
+                if(session.getUserType() == UserType.CUSTOMER)
+                    aUser = new Customer(session.getUserName(), session.getTempPassword());
+                else
+                    aUser = new ARealStore("king","123", "Some new Store", "Don't call us, we call you", new ArrayList<>(){
+                        {
+                            add(new Item("some new Item","yum yum", 10));
+                        }
+                    }, 4.5); // we need a page for Store sign-up. for now, we add manually
+                db.saveUser(aUser);
                 // add given input to DB, get in return userId.
-                session.setUserId(1234);
+                session.setUserId(aUser.getId());
                 commands.get(Pages.MAIN_MENU).execute();
             } else {
                 session.setErrorMessage("This user is already exist");

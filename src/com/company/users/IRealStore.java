@@ -11,5 +11,7 @@ public interface IRealStore {
     List<IItem> getItems();
     boolean addOrder(IOrder order);  // confirm new order
     String getContact();
+    double getRating();
+    String getStoreName();
 
 }

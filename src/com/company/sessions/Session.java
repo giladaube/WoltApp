@@ -1,6 +1,7 @@
 package com.company.sessions;
 import com.company.IItem;
 import com.company.IOrder;
+import com.company.IVirtualStore;
 import com.company.UserType;
 import com.company.users.ARealStore;
 import com.company.users.Customer;
@@ -39,6 +40,11 @@ public class Session implements ISession {
     @Override
     public int getMenuSelection() {
         return sessionMenu.getMenuSelection();
+    }
+
+    @Override
+    public void setUser(User u) {
+        sessionUser.setUser(u);
     }
 
     @Override
@@ -90,6 +96,16 @@ public class Session implements ISession {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    @Override
+    public IVirtualStore getPickedStore() {
+        return sessionCustomer.getPickedStore();
+    }
+
+    @Override
+    public void setPickedStore(IVirtualStore store) {
+        sessionCustomer.setPickedStore(store);
     }
 
     @Override

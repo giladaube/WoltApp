@@ -67,5 +67,10 @@ public class FactoryPageConsole extends AFactoryPage {
         return new SearchResultsConsolePage(session);
     }
 
+    @Override
+    public AMenuViewPage getMenuViewPage() {
+        return new MenuViewPageConsole(session);
+    }
+
 
 }

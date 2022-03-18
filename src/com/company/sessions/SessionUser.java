@@ -10,7 +10,10 @@ public class SessionUser implements ISessionUser{
     public User getUser() {
         return currentUser;
     }
-
+    @Override
+    public void setUser(User u){
+        currentUser = u;
+    }
     @Override
     public void setUserType(UserType type) {
         currentUser.setUserType(type);

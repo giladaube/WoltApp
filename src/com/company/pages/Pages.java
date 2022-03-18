@@ -13,4 +13,5 @@ public enum Pages {
     STORE_MENU,
     EXIT,
     ERROR,
+    MENU_VIEW
 }

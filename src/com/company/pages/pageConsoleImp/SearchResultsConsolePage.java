@@ -1,6 +1,9 @@
 package com.company.pages.pageConsoleImp;
+import com.company.IVirtualStore;
 import com.company.pages.abstractPages.ASearchResultsPage;
 import com.company.sessions.ISession;
+import com.company.users.ARealStore;
+
 import java.util.Scanner;
 
 public class SearchResultsConsolePage extends ASearchResultsPage {
@@ -11,11 +14,13 @@ public class SearchResultsConsolePage extends ASearchResultsPage {
     @Override
     public void showPage() {
         Scanner input = new Scanner(System.in);
-        System.out.println("""
-                            Search Results
+        IVirtualStore a = session.getPickedStore();
+        System.out.printf("""
+                            Store name %s,
+                            [12] Show Store menu.
                             [4] Back to Main Menu.
                             [6] Change sort method.
-                            """);
+                            """, a.getRealStore().getStoreName());
         int selection = input.nextInt();
         session.setMenuSelection(selection);
     }

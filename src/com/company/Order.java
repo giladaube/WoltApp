@@ -34,7 +34,7 @@ public class Order implements IOrder {
     }
 
     @Override
-    public float getPrice() {
+    public double getPrice() {
         float totalPrice = 0;
         for (IItem item : items) {
             totalPrice += item.getPrice();

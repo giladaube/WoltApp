@@ -7,5 +7,5 @@ public interface IOrder {
     int getOrderNumber();
     List<IItem> getItems();
     IVirtualStore getStore();
-    float getPrice();
+    double getPrice();
 }

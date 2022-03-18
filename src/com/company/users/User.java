@@ -3,6 +3,8 @@ package com.company.users;
 import com.company.Location;
 import com.company.UserType;
 
+import java.util.UUID;
+
 public class User {
     private int id;
     private UserType userType;
@@ -17,6 +19,7 @@ public class User {
         this.userType = type;
         this.location = loc;
         this.password = pass;
+        this.id = UUID.randomUUID().hashCode();
     }
     public void setUserName(String name){ this.name = name;}
     public String getUserName(){return name;}
@@ -39,4 +42,6 @@ public class User {
     public UserType getUserType() {
         return userType;
     }
+
+    public Location getLocation(){ return location; }
 }

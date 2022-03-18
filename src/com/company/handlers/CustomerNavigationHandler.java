@@ -35,6 +35,7 @@ public class CustomerNavigationHandler implements INavigation {
         commands.put(Pages.ORDERS, factoryCommand.getOrders(commands));
         commands.put(Pages.EXIT, factoryCommand.getExitCommand());
         commands.put(Pages.ERROR, factoryCommand.getErrorCommand(commands));
+        commands.put(Pages.MENU_VIEW, factoryCommand.getMenuViewCommand(commands));
     }
 
     @Override
