@@ -12,14 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MenuViewCommand implements ICommand{
+public class ViewMenuCommand implements ICommand{
     private GUI gui;
     private ISession session;
     private AFactoryPage factoryPage;
     private Map<Pages, ICommand> commands;
     private IDatabase db;
 
-    public MenuViewCommand(GUI g, ISession s, AFactoryPage f, Map<Pages, ICommand> c, IDatabase d) {
+    public ViewMenuCommand(GUI g, ISession s, AFactoryPage f, Map<Pages, ICommand> c, IDatabase d) {
         gui = g;
         session = s;
         factoryPage = f;

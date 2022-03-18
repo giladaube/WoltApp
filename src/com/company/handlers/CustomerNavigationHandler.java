@@ -6,7 +6,6 @@ import com.company.IDatabase;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.ISession;
-import com.company.sessions.Session;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +34,7 @@ public class CustomerNavigationHandler implements INavigation {
         commands.put(Pages.ORDERS, factoryCommand.getOrders(commands));
         commands.put(Pages.EXIT, factoryCommand.getExitCommand());
         commands.put(Pages.ERROR, factoryCommand.getErrorCommand(commands));
-        commands.put(Pages.MENU_VIEW, factoryCommand.getMenuViewCommand(commands));
+        commands.put(Pages.VIEW_MENU, factoryCommand.getMenuViewCommand(commands));
     }
 
     @Override

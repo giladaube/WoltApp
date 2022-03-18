@@ -69,7 +69,7 @@ public class FactoryPageConsole extends AFactoryPage {
 
     @Override
     public AMenuViewPage getMenuViewPage() {
-        return new MenuViewPageConsole(session);
+        return new ViewMenuPageConsole(session);
     }
 
 

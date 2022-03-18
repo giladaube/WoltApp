@@ -69,6 +69,6 @@ public class FactoryCommand {
         return new StoreMenuCommand(gui, session, factoryPage, commands);
     }
     public ICommand getMenuViewCommand(Map<Pages, ICommand> commands) {
-        return new MenuViewCommand(gui, session, factoryPage, commands, db);
+        return new ViewMenuCommand(gui, session, factoryPage, commands, db);
     }
 }

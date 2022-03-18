@@ -7,9 +7,9 @@ import com.company.sessions.ISession;
 import java.util.List;
 import java.util.Scanner;
 
-public class MenuViewPageConsole extends AMenuViewPage {
+public class ViewMenuPageConsole extends AMenuViewPage {
 
-    public MenuViewPageConsole(ISession session) {
+    public ViewMenuPageConsole(ISession session) {
         super(session);
     }
     @Override

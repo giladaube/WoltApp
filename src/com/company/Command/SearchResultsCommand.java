@@ -28,7 +28,7 @@ public class SearchResultsCommand implements ICommand {
         try {
             session.setPermissions(this);
             switch(Pages.values()[session.getMenuSelection()]){
-                case MENU_VIEW -> commands.get(Pages.MENU_VIEW).execute();
+                case VIEW_MENU -> commands.get(Pages.VIEW_MENU).execute();
                 case MAIN_MENU -> commands.get(Pages.MAIN_MENU).execute();
                 case SEARCH_STORES_BY -> commands.get(Pages.SEARCH_STORES_BY).execute();
                 default -> {
