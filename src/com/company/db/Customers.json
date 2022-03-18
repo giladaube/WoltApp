@@ -1,0 +1,35 @@
+[
+  {
+    "orders": {},
+    "id": 1263575995,
+    "userType": "CUSTOMER",
+    "name": "shai",
+    "location": {
+      "x": 9,
+      "y": 0
+    },
+    "password": "123"
+  },
+  {
+    "orders": {},
+    "id": -219053208,
+    "userType": "CUSTOMER",
+    "name": "or",
+    "location": {
+      "x": 1,
+      "y": 5
+    },
+    "password": "456"
+  },
+  {
+    "orders": {},
+    "id": 2036220168,
+    "userType": "CUSTOMER",
+    "name": "gilad",
+    "location": {
+      "x": 4,
+      "y": 8
+    },
+    "password": "789"
+  }
+]

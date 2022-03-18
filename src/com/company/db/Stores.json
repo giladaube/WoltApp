@@ -1,0 +1,95 @@
+[
+  {
+    "storeName": "The little burger shop",
+    "contactInfo": "Frank Sinatra - 0523333333",
+    "orders": [],
+    "items": [
+      {
+        "name": "Texas\u0027s choice",
+        "description": "200g burger",
+        "price": 60.0
+      },
+      {
+        "name": "Big One",
+        "description": "300g burger",
+        "price": 70.0
+      },
+      {
+        "name": "Vegan burger",
+        "description": "vegan burger",
+        "price": 50.0
+      }
+    ],
+    "rating": 3.9,
+    "id": 284702008,
+    "userType": "STORE",
+    "name": "burger",
+    "location": {
+      "x": 8,
+      "y": 7
+    },
+    "password": "123"
+  },
+  {
+    "storeName": "Domino\u0027s Pizza",
+    "contactInfo": "Ozzy Osbourne - 0526666666",
+    "orders": [],
+    "items": [
+      {
+        "name": "Joey doesn\u0027t share food",
+        "description": "Personal pizza",
+        "price": 30.0
+      },
+      {
+        "name": "For you \u0026 me",
+        "description": "Medium size pizza",
+        "price": 50.0
+      },
+      {
+        "name": "Family size",
+        "description": "Extra Large pizza",
+        "price": 80.0
+      }
+    ],
+    "rating": 5.0,
+    "id": -1217192261,
+    "userType": "STORE",
+    "name": "pizza",
+    "location": {
+      "x": 4,
+      "y": 6
+    },
+    "password": "123"
+  },
+  {
+    "storeName": "Japan in a dish",
+    "contactInfo": "Margaret Heafield Hamilton - 052999999",
+    "orders": [],
+    "items": [
+      {
+        "name": "Salmon roll",
+        "description": "Fresh Norwegian salmon",
+        "price": 70.0
+      },
+      {
+        "name": "Tuna roll",
+        "description": "Deepwater blue tuna",
+        "price": 80.0
+      },
+      {
+        "name": "Fish Salad",
+        "description": "A combination of various fish and vegetables",
+        "price": 100.0
+      }
+    ],
+    "rating": 4.2,
+    "id": 1213658403,
+    "userType": "STORE",
+    "name": "sushi",
+    "location": {
+      "x": 8,
+      "y": 6
+    },
+    "password": "123"
+  }
+]
