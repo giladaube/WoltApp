@@ -1,11 +1,10 @@
 package com.company.Command;
 
 import com.company.*;
+import com.company.db.IDatabase;
 import com.company.pages.Pages;
-import com.company.pages.Search;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.ISession;
-import com.company.users.ARealStore;
 import com.company.users.Customer;
 
 import java.util.ArrayList;

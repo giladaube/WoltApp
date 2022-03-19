@@ -1,6 +1,7 @@
 package com.company.Command;
 
 import com.company.*;
+import com.company.db.IDatabase;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.ISession;
@@ -9,7 +10,6 @@ import com.company.users.Customer;
 import com.company.users.User;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class SignUpCommand implements ICommand {

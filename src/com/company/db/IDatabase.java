@@ -1,5 +1,6 @@
-package com.company;
+package com.company.db;
 
+import com.company.IOrder;
 import com.company.strategy.ISearchStrategy;
 import com.company.users.ARealStore;
 import com.company.users.Customer;

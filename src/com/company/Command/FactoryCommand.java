@@ -1,8 +1,8 @@
 package com.company.Command;
 
-import com.company.FileDB;
+import com.company.db.FileDB;
 import com.company.GUI;
-import com.company.IDatabase;
+import com.company.db.IDatabase;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.ISession;

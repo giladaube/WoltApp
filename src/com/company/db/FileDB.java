@@ -1,5 +1,8 @@
-package com.company;
+package com.company.db;
 
+import com.company.IOrder;
+import com.company.Item;
+import com.company.UserType;
 import com.company.strategy.ISearchStrategy;
 import com.company.users.ARealStore;
 import com.company.users.Customer;
@@ -24,9 +27,10 @@ public class FileDB implements IDatabase{
     private final String storesFile = "src\\com\\company\\db\\Stores.json";
     private Reader reader = null;
     private Writer writer = null;
-
+    private Gson gson;  // outsource adapter
     // Singleton class
     private FileDB(){
+        gson = new GsonBuilder().setPrettyPrinting().create();
         initCustomers(customersFile);
         initStores(storesFile);
     }  // others can't create new DB
@@ -92,7 +96,7 @@ public class FileDB implements IDatabase{
     private <T> T[] getUsers(Class<T[]> classOfT, String filename){
         try {
             reader = new FileReader(filename);
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
             T[] users = gson.fromJson(reader, classOfT);
             reader.close();
             return users;
@@ -156,7 +160,6 @@ public class FileDB implements IDatabase{
     }
 
     private void save(Object obj, String path){
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
             writer = new FileWriter(path);
             gson.toJson(obj, writer);
