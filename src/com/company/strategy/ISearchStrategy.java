@@ -1,4 +1,4 @@
-package com.company;
+package com.company.strategy;
 
 import com.company.users.ARealStore;
 

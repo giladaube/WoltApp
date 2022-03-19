@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.strategy.ISearchStrategy;
 import com.company.users.ARealStore;
 import com.company.users.Customer;
 import com.company.users.User;
@@ -51,12 +52,8 @@ public class FileDB implements IDatabase{
 
     @Override
     public void saveUser(User user) {
-        if(user.getUserType() == UserType.CUSTOMER){
-            List<Customer> d = getCustomers();
-            Customer c = (Customer) user;
-            d.add(c);
-            save(d, customersFile);
-        }
+        if(user.getUserType() == UserType.CUSTOMER)
+            save(getCustomers().add((Customer) user), customersFile);
         else
             save(getStores().add((ARealStore) user), storesFile);
     }
