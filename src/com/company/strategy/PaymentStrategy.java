@@ -12,7 +12,7 @@ public class PaymentStrategy {
     }
 
     public boolean payAmount(double amount) {
-        if(payment.checkValidMethod()){
+        if(payment.checkValidity()){
             payment.pay(amount);
             return true;
         }

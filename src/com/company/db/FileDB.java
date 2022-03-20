@@ -31,13 +31,13 @@ public class FileDB implements IDatabase{
     private Writer writer = null;
     private Gson gson;  // outsource adapter
     // Singleton class
-    private FileDB(){
+    private FileDB(){ // private CTOR, others can't create new DB
         gson = new GsonBuilder()
                 .registerTypeAdapter(PaymentMethod.class, new InterfaceAdapter<PaymentMethod>())
                 .setPrettyPrinting().create();
         initCustomers(customersFile);
         initStores(storesFile);
-    }  // others can't create new DB
+    }
     private static class DatabaseHolder{
         public static final IDatabase db = new FileDB();
     }
