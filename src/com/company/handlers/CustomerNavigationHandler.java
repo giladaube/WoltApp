@@ -28,6 +28,7 @@ public class CustomerNavigationHandler implements INavigation {
 
     private void initCommands() {
         commands = new HashMap<>();
+        commands.put(Pages.START, factoryCommand.getStoreMenuCommand(commands));
         commands.put(Pages.MAIN_MENU, factoryCommand.gerCustomerMenuCommand(commands));
         commands.put(Pages.SEARCH_STORES_BY, factoryCommand.getSearchStoresBy(commands));
         commands.put(Pages.SEARCH_RESULTS, factoryCommand.getSearchResults(commands));

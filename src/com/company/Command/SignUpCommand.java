@@ -43,8 +43,7 @@ public class SignUpCommand implements ICommand {
                         }
                     }, 4.5); // we need a page for Store sign-up. for now, we add manually
                 db.saveUser(aUser);
-                // add given input to DB, get in return userId.
-                session.setUserId(aUser.getId());
+                session.setUser(aUser);
                 commands.get(Pages.MAIN_MENU).execute();
             } else {
                 session.setErrorMessage("This user is already exist");

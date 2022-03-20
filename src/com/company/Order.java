@@ -85,11 +85,16 @@ public class Order implements IOrder {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append("Order number: ").append(orderId).append(", have the following items:\n");
+        result.append("-----------------------------------\n");
+        result.append("Order number    [").append(orderId).append("]\n");
+        result.append("Items:\n");
+        result.append("-----------------------------------\n");
+
         for (IItem item : items) {
             result.append(item.toString());
+            result.append("-----------------------------------\n");
         }
-        result.append("\n").append("Total cost: ").append(getPrice()).append(".");
+        result.append("Total cost:     ").append(getPrice()).append("\n");
         return result.toString();
     }
 

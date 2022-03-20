@@ -30,6 +30,7 @@ public class ErrorCommand implements ICommand {
             }
             switch (Pages.values()[session.getMenuSelection()]) {
                 case START -> commands.get(Pages.START).execute();
+                case MAIN_MENU -> commands.get(Pages.MAIN_MENU).execute();
                 case EXIT -> commands.get(Pages.EXIT).execute();
                 default -> {
                     session.setErrorMessage("Wrong input");

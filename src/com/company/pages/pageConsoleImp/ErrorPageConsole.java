@@ -16,6 +16,7 @@ public class ErrorPageConsole extends AErrorPage {
                 %s.
                 [0] Back To Start.
                 [1] Try again.
+                [4] Back To Menu.
                 [10] Exit.
                 """, session.getErrorMessage());
 
