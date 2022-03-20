@@ -2,21 +2,61 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Order implements IOrder {
     private List<IItem> items;
     private IVirtualStore store;
     private int orderId;
+    private int status;
+    private Observer orderHandleListener;
 
-    public Order(List<IItem> items, IVirtualStore store) {
+    public Order(List<IItem> items, IVirtualStore store, Observer orderHandleListener) {
+        this.orderId = UUID.randomUUID().hashCode();
+        this.status = 0;
         this.items = items;
         this.store = store;
+        this.orderHandleListener = orderHandleListener;
     }
+
+    @Override
+    public void setStatus(int status) {
+        this.status = status;
+        notifySubscribers(status);
+    }
+
+    @Override
+    public int getStatus() {
+        return status;
+    }
+
+    @Override
+    public void addSubscriber(Observer observer) {
+        orderHandleListener = observer;
+    }
+
+    @Override
+    public void removeSubscriber(Observer observer) {
+
+    }
+
+    @Override
+    public void notifySubscribers(String tweet) {
+
+    }
+
+    @Override
+    public void notifySubscribers(int OrderID) {
+        orderHandleListener.update(OrderID);
+    }
+
 
     @Override
     public void setOrderNumber(int id) {
         orderId = id;
     }
+
+
 
     @Override
     public int getOrderNumber() {
@@ -52,4 +92,6 @@ public class Order implements IOrder {
         result.append("\n").append("Total cost: ").append(getPrice()).append(".");
         return result.toString();
     }
+
+
 }

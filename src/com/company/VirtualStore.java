@@ -22,11 +22,11 @@ public class VirtualStore implements IVirtualStore {
 
     @Override
     public IOrder newOrder(List<IItem> items) {
-        return new Order(items, this);
+        return new Order(items, this, new OrderHandle());
     }
 
     @Override
-    public boolean addOrder(IOrder order) {
+    public boolean addOrder(IOrder order) throws InterruptedException {
         return realStore.addOrder(order);
     }
 }

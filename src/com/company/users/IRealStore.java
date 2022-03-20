@@ -9,7 +9,7 @@ import java.util.List;
 public interface IRealStore {
     IVirtualStore getVirtualStore(); // remove ????
     List<IItem> getItems();
-    boolean addOrder(IOrder order);  // confirm new order
+    boolean addOrder(IOrder order) throws InterruptedException;  // confirm new order
     String getContact();
     double getRating();
     String getStoreName();

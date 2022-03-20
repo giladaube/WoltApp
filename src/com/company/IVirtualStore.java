@@ -9,5 +9,5 @@ public interface IVirtualStore {
     String getStoreName();
     IOrder newOrder(List<IItem> items);
 
-    boolean addOrder(IOrder order);
+    boolean addOrder(IOrder order) throws InterruptedException;
 }
