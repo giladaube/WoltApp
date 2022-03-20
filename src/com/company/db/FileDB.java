@@ -84,14 +84,13 @@ public class FileDB implements IDatabase{
     }
 
     @Override
-    public ARealStore getStore(ISearchStrategy comparator) {
+    public ARealStore getBestStore(ISearchStrategy comparator) {
         // returns best store according to comparator picked by user
         List<ARealStore> stores =  getStores();
         assert stores.size() != 0;
         ARealStore bestStore = stores.get(0);
-        for (int i = 0; i < stores.size() - 1; i++) {
-            ARealStore curStore = stores.get(i);
-            if(!comparator.compare(bestStore, curStore))
+        for (ARealStore curStore : stores) {
+            if (!comparator.compare(bestStore, curStore))
                 bestStore = curStore;
         }
         return bestStore;

@@ -13,6 +13,5 @@ public interface IDatabase {
     void saveUser(User user);
     void deleteUser(User user);
     int addOrder(IOrder order);
-    List<Customer> getCustomers();
-    ARealStore getStore(ISearchStrategy comparator);
+    ARealStore getBestStore(ISearchStrategy comparator);
 }
