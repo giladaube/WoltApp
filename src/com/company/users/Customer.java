@@ -28,7 +28,7 @@ public class Customer extends User implements Observer {
 
     public void addOrder(List<IItem> items, IVirtualStore store) throws InterruptedException {
         System.out.println("Got to addOrder in Customer");
-        orderHandle.addSubscriber(this);
+        orderHandle.addSubscriber(this); //GSON can't handle circular dependency, we add "this" here
         orderHandle.setPaymentHandler(new PaymentStrategy(this.paymentMethod));
         orderHandle.addOrder(new Order(items, store, orderHandle));
     }
