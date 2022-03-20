@@ -3,7 +3,9 @@ package com.company.db;
 import com.company.IOrder;
 import com.company.Item;
 import com.company.UserType;
+import com.company.gsonAdapter.InterfaceAdapter;
 import com.company.strategy.ISearchStrategy;
+import com.company.strategy.PaymentMethod;
 import com.company.users.ARealStore;
 import com.company.users.Customer;
 import com.company.users.User;
@@ -30,7 +32,9 @@ public class FileDB implements IDatabase{
     private Gson gson;  // outsource adapter
     // Singleton class
     private FileDB(){
-        gson = new GsonBuilder().setPrettyPrinting().create();
+        gson = new GsonBuilder()
+                .registerTypeAdapter(PaymentMethod.class, new InterfaceAdapter<PaymentMethod>())
+                .setPrettyPrinting().create();
         initCustomers(customersFile);
         initStores(storesFile);
     }  // others can't create new DB
@@ -56,10 +60,16 @@ public class FileDB implements IDatabase{
 
     @Override
     public void saveUser(User user) {
-        if(user.getUserType() == UserType.CUSTOMER)
-            save(getCustomers().add((Customer) user), customersFile);
-        else
-            save(getStores().add((ARealStore) user), storesFile);
+        if(user.getUserType() == UserType.CUSTOMER){
+            List<Customer> cs = getCustomers();
+            cs.add((Customer) user);
+            save(cs, customersFile);
+        }
+        else{
+            List<ARealStore> stores = getStores();
+            stores.add((ARealStore) user);
+            save(stores, storesFile);
+        }
     }
 
     @Override
