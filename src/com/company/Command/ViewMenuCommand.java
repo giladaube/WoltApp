@@ -45,7 +45,6 @@ public class ViewMenuCommand implements ICommand{
                 Customer c = (Customer)session.getUser(); // we know for a fact that this user is customer
                 c.addOrder(pickedItems, session.getPickedStore());
             }
-            System.out.println("AFTER ADD ORDER");
             commands.get(Pages.MAIN_MENU).execute();
         } catch (Exception e) {
             session.setErrorMessage(e.getMessage());

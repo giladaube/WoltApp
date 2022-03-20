@@ -20,10 +20,10 @@ public class VirtualStore implements IVirtualStore {
         return realStore.getStoreName();
     }
 
-    @Override
-    public IOrder newOrder(List<IItem> items) {
-        return new Order(items, this, new OrderHandle());
-    }
+//    @Override
+//    public IOrder newOrder(List<IItem> items) {
+//        return new Order(items, this, new OrderHandle());
+//    }
 
     @Override
     public boolean addOrder(IOrder order) throws InterruptedException {
