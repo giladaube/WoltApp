@@ -44,7 +44,15 @@ public class Session implements ISession {
 
     @Override
     public void setUser(User u) {
-        sessionUser.setUser(u);
+        if (sessionUser.getUserType() == UserType.CUSTOMER) {
+            Customer c = (Customer) u;
+            sessionUser.setUser(c);
+            sessionCustomer = new SessionCustomer(c);
+        } else {
+            ARealStore a = (ARealStore) u;
+            sessionUser.setUser(a);
+            sessionStore = new SessionStore(a);
+        }
     }
 
     @Override
@@ -55,12 +63,6 @@ public class Session implements ISession {
     @Override
     public void setUserType(UserType type) {
         sessionUser.setUserType(type);
-        if (type == UserType.CUSTOMER) {
-            sessionCustomer = new SessionCustomer(new Customer(sessionUser.getUserName(), sessionUser.getTempPassword()));
-        }
-//        else {
-//            sessionStore = new SessionStore(new ARealStore(sessionUser.getUserName(), sessionUser.getTempPassword()));
-//        }
     }
 
     @Override

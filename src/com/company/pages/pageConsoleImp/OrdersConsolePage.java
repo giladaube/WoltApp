@@ -1,4 +1,5 @@
 package com.company.pages.pageConsoleImp;
+import com.company.IOrder;
 import com.company.pages.abstractPages.AOrdesPage;
 import com.company.sessions.ISession;
 import java.util.Scanner;
@@ -16,7 +17,9 @@ public class OrdersConsolePage extends AOrdesPage {
             if (session.getOrders().size() == 0) {
                 System.out.println("You have no orders. Go and order today!");
             } else {
-                System.out.println(session.getOrders().toString());
+                for (IOrder order : session.getOrders()) {
+                    System.out.print(order.toString());
+                }
             }
         } catch (Exception e) {
             System.out.println("There is a problem, please try again later.");

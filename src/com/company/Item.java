@@ -24,4 +24,13 @@ public class Item implements IItem {
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("Name            ").append(name).append("\n");
+        result.append("Description     ").append(description).append("\n");
+        result.append("Price           ").append(price).append("\n");
+        return result.toString();
+    }
 }
