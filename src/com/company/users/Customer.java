@@ -3,6 +3,7 @@ package com.company.users;
 import com.company.*;
 import com.company.strategy.CreditCardPayment;
 import com.company.strategy.PaymentMethod;
+import com.company.strategy.PaymentStrategy;
 
 import java.util.List;
 
@@ -15,19 +16,20 @@ public class Customer extends User implements Observer {
     }
     public Customer(String name, String pass){
         super(name, pass, UserType.CUSTOMER, Location.generateRandomLocation());
-        this.orderHandle = new OrderHandle();
-
         // everyone pays with card. can get card info when sign-up...
-//        paymentMethod = new CreditCardPayment();
+        paymentMethod = new CreditCardPayment();
+        this.orderHandle = new OrderHandle();
     }
 
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+        orderHandle.setPaymentHandler(new PaymentStrategy(paymentMethod));
     }
 
     public void addOrder(List<IItem> items, IVirtualStore store) throws InterruptedException {
         System.out.println("Got to addOrder in Customer");
         orderHandle.addSubscriber(this);
+        orderHandle.setPaymentHandler(new PaymentStrategy(this.paymentMethod));
         orderHandle.addOrder(new Order(items, store, orderHandle));
     }
     public List<IOrder> getOrders(){return orderHandle.getOrders();}

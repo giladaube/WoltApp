@@ -11,20 +11,18 @@ public class OrderHandle implements Observable, Observer {
     private List<IOrder> orders = new ArrayList<>();
     private PaymentStrategy paymentHandler;
     private Observer customer;
-    public OrderHandle(){
-//        customer = c;
-//        paymentHandler = new PaymentStrategy(customer.getPaymentMethod());
-    }
+
 
     public void addOrder(IOrder order) throws InterruptedException {
-//        if(paymentHandler.payAmount(order.getPrice())){
-            // send the order here - after payAmount is done
+        // send the order if payment was successful
+        if(paymentHandler.payAmount(order.getPrice())){
             orders.add(order);
             order.getStore().addOrder(order);
-//        }
-        // order.setOrderNumber(db.addOrder(order));
-//        boolean confirmation = order.getStore().addOrder(order);
-        // NEED TO NOTIFY CUSTOMER ABOUT CONFIRMATION
+        }
+    }
+
+    public void setPaymentHandler(PaymentStrategy paymentHandler) {
+        this.paymentHandler = paymentHandler;
     }
 
     public List<IOrder> getOrders(){return orders;}

@@ -1,10 +1,10 @@
 package com.company.strategy;
 
-public class CreditCardPayment implements PaymentMethod {
+public class CashPayment implements PaymentMethod {
 
     @Override
     public void pay(double amount) {
-        System.out.printf("paying with Credit Card - %.2f\n\n", amount);
+        System.out.printf("paying with CASH - %.2f\n\n", amount);
     }
 
     @Override
@@ -12,4 +12,5 @@ public class CreditCardPayment implements PaymentMethod {
         // checking if card is legit...
         return true;
     }
+
 }
