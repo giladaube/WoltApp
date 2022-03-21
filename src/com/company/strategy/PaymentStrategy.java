@@ -7,11 +7,7 @@ public class PaymentStrategy {
         this.payment = payment;
     }
 
-    public PaymentMethod getPayment() {
-        return payment;
-    }
-
-    public boolean payAmount(double amount) {
+    public boolean makePayment(double amount) {
         if(payment.checkValidity()){
             payment.pay(amount);
             return true;

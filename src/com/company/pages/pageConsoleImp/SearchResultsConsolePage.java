@@ -1,8 +1,7 @@
 package com.company.pages.pageConsoleImp;
-import com.company.IVirtualStore;
+import com.company.users.IVirtualStore;
 import com.company.pages.abstractPages.ASearchResultsPage;
 import com.company.sessions.ISession;
-import com.company.users.ARealStore;
 
 import java.util.Scanner;
 

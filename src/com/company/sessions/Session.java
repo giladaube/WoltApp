@@ -1,11 +1,10 @@
 package com.company.sessions;
-import com.company.IItem;
-import com.company.IOrder;
-import com.company.IVirtualStore;
-import com.company.UserType;
-import com.company.users.ARealStore;
+import com.company.orders.IItem;
+import com.company.orders.IOrder;
+import com.company.users.IVirtualStore;
+import com.company.users.UserType;
+import com.company.users.RealStore;
 import com.company.users.Customer;
-import com.company.users.IRealStore;
 import com.company.users.User;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class Session implements ISession {
             sessionUser.setUser(c);
             sessionCustomer = new SessionCustomer(c);
         } else {
-            ARealStore a = (ARealStore) u;
+            RealStore a = (RealStore) u;
             sessionUser.setUser(a);
             sessionStore = new SessionStore(a);
         }

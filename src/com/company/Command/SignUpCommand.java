@@ -1,13 +1,15 @@
 package com.company.Command;
 
-import com.company.*;
 import com.company.db.IDatabase;
+import com.company.orders.Item;
+import com.company.pages.GUI;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.ISession;
-import com.company.users.ARealStore;
+import com.company.users.RealStore;
 import com.company.users.Customer;
 import com.company.users.User;
+import com.company.users.UserType;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -37,7 +39,7 @@ public class SignUpCommand implements ICommand {
                 if(session.getUserType() == UserType.CUSTOMER)
                     aUser = new Customer(session.getUserName(), session.getTempPassword());
                 else
-                    aUser = new ARealStore("king","123", "Some new Store", "Don't call us, we call you", new ArrayList<>(){
+                    aUser = new RealStore("king","123", "Some new Store", "Don't call us, we call you", new ArrayList<>(){
                         {
                             add(new Item("some new Item","yum yum", 10));
                         }

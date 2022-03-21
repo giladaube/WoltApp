@@ -1,8 +1,7 @@
 package com.company.sessions;
 
-import com.company.IOrder;
-import com.company.IVirtualStore;
-import com.company.users.ARealStore;
+import com.company.orders.IOrder;
+import com.company.users.IVirtualStore;
 import com.company.users.Customer;
 
 import java.util.List;

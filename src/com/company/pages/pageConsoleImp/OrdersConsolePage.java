@@ -1,5 +1,5 @@
 package com.company.pages.pageConsoleImp;
-import com.company.IOrder;
+import com.company.orders.IOrder;
 import com.company.pages.abstractPages.AOrdesPage;
 import com.company.sessions.ISession;
 import java.util.Scanner;

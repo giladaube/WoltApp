@@ -1,7 +1,8 @@
 package com.company.Command;
 
-import com.company.*;
 import com.company.db.IDatabase;
+import com.company.orders.IItem;
+import com.company.pages.GUI;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.ISession;

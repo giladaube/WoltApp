@@ -1,6 +1,6 @@
 package com.company.sessions;
 
-import com.company.IItem;
+import com.company.orders.IItem;
 import com.company.users.IRealStore;
 
 import java.util.List;

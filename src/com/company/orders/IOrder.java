@@ -1,8 +1,11 @@
-package com.company;
+package com.company.orders;
+
+import com.company.observer.Observable;
+import com.company.users.IVirtualStore;
 
 import java.util.List;
 
-public interface IOrder extends Observable  {
+public interface IOrder extends Observable {
 
 
     void notifySubscribers(int OrderID);

@@ -4,14 +4,13 @@ import com.company.Command.ICommand;
 import com.company.Command.SignInCommand;
 import com.company.Command.SignUpCommand;
 import com.company.Command.StartCommand;
-import com.company.IItem;
-import com.company.IOrder;
-import com.company.IVirtualStore;
-import com.company.UserType;
+import com.company.orders.IItem;
+import com.company.orders.IOrder;
+import com.company.users.IVirtualStore;
+import com.company.users.UserType;
 import com.company.pages.IPage;
 import com.company.pages.abstractPages.ASignInPage;
 import com.company.pages.abstractPages.ASignUpPage;
-import com.company.users.ARealStore;
 import com.company.users.User;
 
 import java.util.List;

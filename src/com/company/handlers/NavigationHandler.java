@@ -2,7 +2,7 @@ package com.company.handlers;
 
 import com.company.Command.*;
 import com.company.db.FileDB;
-import com.company.GUI;
+import com.company.pages.GUI;
 import com.company.db.IDatabase;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;

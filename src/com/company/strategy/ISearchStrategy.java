@@ -1,7 +1,7 @@
 package com.company.strategy;
 
-import com.company.users.ARealStore;
+import com.company.users.RealStore;
 
 public interface ISearchStrategy {
-    boolean compare(ARealStore store1, ARealStore store2);
+    boolean compare(RealStore store1, RealStore store2);
 }

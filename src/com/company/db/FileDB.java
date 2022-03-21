@@ -1,12 +1,12 @@
 package com.company.db;
 
-import com.company.IOrder;
-import com.company.Item;
-import com.company.UserType;
+import com.company.orders.IOrder;
+import com.company.orders.Item;
+import com.company.users.UserType;
 import com.company.gsonAdapter.InterfaceAdapter;
 import com.company.strategy.ISearchStrategy;
 import com.company.strategy.PaymentMethod;
-import com.company.users.ARealStore;
+import com.company.users.RealStore;
 import com.company.users.Customer;
 import com.company.users.User;
 import com.google.gson.Gson;
@@ -51,7 +51,7 @@ public class FileDB implements IDatabase{
             if(c.getUserName().equals(name) && c.getPassword().equals(pass))
                 return c;
         }
-        for(ARealStore s : getStores()){
+        for(RealStore s : getStores()){
             if(s.getUserName().equals(name) && s.getPassword().equals(pass))
                 return s;
         }
@@ -66,8 +66,8 @@ public class FileDB implements IDatabase{
             save(cs, customersFile);
         }
         else{
-            List<ARealStore> stores = getStores();
-            stores.add((ARealStore) user);
+            List<RealStore> stores = getStores();
+            stores.add((RealStore) user);
             save(stores, storesFile);
         }
     }
@@ -84,12 +84,12 @@ public class FileDB implements IDatabase{
     }
 
     @Override
-    public ARealStore getBestStore(ISearchStrategy comparator) {
+    public RealStore getBestStore(ISearchStrategy comparator) {
         // returns best store according to comparator picked by user
-        List<ARealStore> stores =  getStores();
+        List<RealStore> stores =  getStores();
         assert stores.size() != 0;
-        ARealStore bestStore = stores.get(0);
-        for (ARealStore curStore : stores) {
+        RealStore bestStore = stores.get(0);
+        for (RealStore curStore : stores) {
             if (!comparator.compare(bestStore, curStore))
                 bestStore = curStore;
         }
@@ -116,8 +116,8 @@ public class FileDB implements IDatabase{
         }
     }
 
-    public List<ARealStore> getStores() {
-        ARealStore[] stores = getUsers(ARealStore[].class, storesFile);
+    public List<RealStore> getStores() {
+        RealStore[] stores = getUsers(RealStore[].class, storesFile);
         assert stores != null;
         return new ArrayList<>(Arrays.asList(stores));
     }
@@ -157,10 +157,10 @@ public class FileDB implements IDatabase{
             }
         };
 
-        ARealStore burgerStore = new ARealStore("burger","123","The little burger shop", "Frank Sinatra - 0523333333", burgerStoreItems, 3.9);
-        ARealStore pizzaStore = new ARealStore("pizza","123", "Domino's Pizza", "Ozzy Osbourne - 0526666666", pizzaStoreItems, 5.0);
-        ARealStore sushiStore = new ARealStore("sushi","123", "Japan in a dish", "Margaret Heafield Hamilton - 052999999", sushiStoreItems, 4.2);
-        List<ARealStore> stores = new ArrayList<>();
+        RealStore burgerStore = new RealStore("burger","123","The little burger shop", "Frank Sinatra - 0523333333", burgerStoreItems, 3.9);
+        RealStore pizzaStore = new RealStore("pizza","123", "Domino's Pizza", "Ozzy Osbourne - 0526666666", pizzaStoreItems, 5.0);
+        RealStore sushiStore = new RealStore("sushi","123", "Japan in a dish", "Margaret Heafield Hamilton - 052999999", sushiStoreItems, 4.2);
+        List<RealStore> stores = new ArrayList<>();
         stores.add(burgerStore);
         stores.add(pizzaStore);
         stores.add(sushiStore);
