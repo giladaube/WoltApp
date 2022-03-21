@@ -1,39 +1,45 @@
 package com.company.handlers;
 
+import com.company.Command.*;
+import com.company.db.FileDB;
 import com.company.GUI;
+import com.company.db.IDatabase;
+import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
-import com.company.sessions.Session;
+import com.company.sessions.ISession;
 
-public class NavigationHandler {
+import java.util.HashMap;
+import java.util.Map;
+
+public class NavigationHandler implements INavigation{
     private GUI gui;
-    private Session session;
+    private ISession session;
     private AFactoryPage factoryPage;
-
-    public NavigationHandler(GUI g, Session s, AFactoryPage f) {
+    private IDatabase db;
+    private FactoryCommand factoryCommand;
+    private Map<Pages, ICommand> commands;
+    public NavigationHandler(GUI g, ISession s, AFactoryPage f, FactoryCommand fc) {
         gui = g;
         session = s;
         factoryPage = f;
+        db = FileDB.getDatabase();
+        factoryCommand = fc;
+        initCommands();
     }
 
-    private void login() {
-        LoginHandler loginHandler = new LoginHandler(factoryPage, gui, session);
-        loginHandler.start();
+    private void initCommands() {
+        commands = new HashMap<>();
+        commands.put(Pages.START, factoryCommand.getStartCommand(commands));
+        commands.put(Pages.LOGIN, factoryCommand.getLoginCommand(commands));
+        commands.put(Pages.SIGN_IN, factoryCommand.getSignInCommand(commands));
+        commands.put(Pages.SIGN_UP, factoryCommand.getSignUpCommand(commands));
+        commands.put(Pages.MAIN_MENU, factoryCommand.getMainMenuCommand(commands));
+        commands.put(Pages.EXIT, factoryCommand.getExitCommand());
+        commands.put(Pages.ERROR, factoryCommand.getErrorCommand(commands));
     }
 
-    private int menu() {
-        gui.setPage(factoryPage.getMenuPage());
-        gui.show();
-        return session.getMenuSelection();
-    }
-
+    @Override
     public void start() {
-        login();
-        int userSelection = menu();
-        while (userSelection != 9) {
-            // NEED TO USE A COMMAND PATTERN HERE, WHICH WILL RETURN A PAGE BASED ON USER SELECTION
-            System.out.println("user selection is:" + userSelection);
-            userSelection = menu();
-        }
+        commands.get(Pages.START).execute();
     }
-
 }

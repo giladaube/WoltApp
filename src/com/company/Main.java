@@ -1,20 +1,28 @@
 package com.company;
 
+import com.company.Command.FactoryCommand;
+import com.company.handlers.INavigation;
 import com.company.handlers.NavigationHandler;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.pages.pageConsoleImp.FactoryPageConsole;
-import com.company.sessions.Session;
-import com.company.users.User;
+import com.company.sessions.ISession;
+import com.company.sessions.SessionProxy;
+import com.company.users.Customer;
+
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
         GUI gui = new GUI();
-        User user = new User();
-        Session session = new Session(user);
+        ISession session = new SessionProxy();
         AFactoryPage factory = new FactoryPageConsole(session);
-        NavigationHandler navigationHandler = new NavigationHandler(gui, session, factory);
+        FactoryCommand factoryCommand = new FactoryCommand(gui, session, factory);
+        INavigation navigationHandler = new NavigationHandler(gui, session, factory, factoryCommand);
         navigationHandler.start();
 
+//        IDatabase db = FileDB.getDatabase();
+//        List<Customer> lc = db.getCustomers();
+//        System.out.println(lc.size());
     }
 }

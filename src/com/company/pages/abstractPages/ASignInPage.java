@@ -1,12 +1,13 @@
 package com.company.pages.abstractPages;
 
 import com.company.pages.IPage;
-import com.company.sessions.ISessionLogin;
+import com.company.sessions.ISession;
 
 public abstract class ASignInPage implements IPage {
-    protected ISessionLogin session;
+    protected ISession session;
 
-    public ASignInPage(ISessionLogin s){
+    public ASignInPage(ISession s){
         session = s;
+        session.setPermissions(this);
     }
 }

@@ -1,5 +1,6 @@
 package com.company.sessions;
 
 public interface ISessionMenu {
-    public void setMenuSelection(int s);
+    void setMenuSelection(int s);
+    int getMenuSelection();
 }

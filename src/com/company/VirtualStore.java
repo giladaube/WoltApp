@@ -5,11 +5,9 @@ import com.company.users.IRealStore;
 import java.util.List;
 // VirtualStore is a reflection of a real store that is presented to the Costumer
 public class VirtualStore implements IVirtualStore {
-    private String name;
     private IRealStore realStore;   // ref to real store
 
-    public VirtualStore(IRealStore s, String name) {
-        this.name = name;
+    public VirtualStore(IRealStore s) {
         realStore = s;
     }
     @Override
@@ -18,12 +16,17 @@ public class VirtualStore implements IVirtualStore {
     }
 
     @Override
-    public IRealStore getRealStore() {
-        return realStore;
+    public String getStoreName() {
+        return realStore.getStoreName();
     }
 
+//    @Override
+//    public IOrder newOrder(List<IItem> items) {
+//        return new Order(items, this, new OrderHandle());
+//    }
+
     @Override
-    public IOrder newOrder(List<IItem> items) {
-        return new Order(items, this);
+    public boolean addOrder(IOrder order) throws InterruptedException {
+        return realStore.addOrder(order);
     }
 }

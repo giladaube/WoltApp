@@ -8,3 +8,4 @@
 /dataSources.local.xml
 # don't add out folder to git
 ../out
+*.json
