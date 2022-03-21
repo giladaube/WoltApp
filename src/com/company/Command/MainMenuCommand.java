@@ -1,8 +1,8 @@
 package com.company.Command;
 
-import com.company.GUI;
+import com.company.pages.GUI;
 import com.company.db.IDatabase;
-import com.company.UserType;
+import com.company.users.UserType;
 import com.company.handlers.CustomerNavigationHandler;
 import com.company.handlers.StoreNavigationHandler;
 import com.company.pages.Pages;

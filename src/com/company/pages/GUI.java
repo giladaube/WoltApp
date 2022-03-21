@@ -1,4 +1,4 @@
-package com.company;
+package com.company.pages;
 
 import com.company.pages.IPage;
 

@@ -1,4 +1,7 @@
-package com.company;
+package com.company.orders;
+
+import com.company.observer.Observer;
+import com.company.users.IVirtualStore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,18 +34,8 @@ public class Order implements IOrder {
     }
 
     @Override
-    public void addSubscriber(Observer observer) {
+    public void setSubscriber(Observer observer) {
         orderHandleListener = observer;
-    }
-
-    @Override
-    public void removeSubscriber(Observer observer) {
-
-    }
-
-    @Override
-    public void notifySubscribers(String tweet) {
-
     }
 
     @Override
@@ -50,13 +43,10 @@ public class Order implements IOrder {
         orderHandleListener.update(OrderID);
     }
 
-
     @Override
     public void setOrderNumber(int id) {
         orderId = id;
     }
-
-
 
     @Override
     public int getOrderNumber() {

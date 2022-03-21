@@ -1,6 +1,8 @@
 package com.company.users;
 
-import com.company.*;
+import com.company.orders.IItem;
+import com.company.orders.IOrder;
+import com.company.orders.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,7 @@ import static java.lang.Thread.sleep;
 // maybe doesn't need to be abstract?
 
 // After implement everything here, please go back and create new RealStore at Session class, on setUserType()
-public class ARealStore extends User implements IRealStore {
+public class RealStore extends User implements IRealStore {
     protected String storeName;
     protected String contactInfo;   // String for now, might be a class
     protected VirtualStore virtualStore;   // remove ????
@@ -21,7 +23,7 @@ public class ARealStore extends User implements IRealStore {
 
 
     // CTOR
-    public ARealStore(String userName, String password, String storeName, String contact, List<Item> itemList, double rate){
+    public RealStore(String userName, String password, String storeName, String contact, List<Item> itemList, double rate){
         super(userName, password, UserType.STORE, Location.generateRandomLocation());
         this.storeName = storeName;
         contactInfo = contact;
@@ -50,20 +52,17 @@ public class ARealStore extends User implements IRealStore {
 
 
     @Override
-    public synchronized boolean addOrder(IOrder order) throws InterruptedException{
+    public boolean addOrder(IOrder order) throws InterruptedException{
         orders.add(order);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 1; i <= 4; i++) {
-                      try {
-                          sleep(1500);
-                      } catch (InterruptedException e) {
-                          e.printStackTrace();
-                      }
-                      order.setStatus(i);
+        new Thread(() -> {
+            for (int i = 1; i < 4; i++) {
+                  try {
+                      sleep(1500);
+                  } catch (InterruptedException e) {
+                      e.printStackTrace();
                   }
-            }
+                  order.setStatus(i);
+              }
         }).start();
         return true;
     } // return confirmation on new order
@@ -78,7 +77,7 @@ public class ARealStore extends User implements IRealStore {
     @Override
     public String getStoreName(){return storeName;}
 
-    public void setVirtualStore(ARealStore realStore) {
+    public void setVirtualStore(RealStore realStore) {
         virtualStore = new VirtualStore(realStore);
     }
 }

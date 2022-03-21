@@ -1,4 +1,4 @@
-package com.company;
+package com.company.users;
 
 public enum UserType {
         CUSTOMER (1, "customer"),

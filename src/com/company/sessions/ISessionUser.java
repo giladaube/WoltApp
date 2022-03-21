@@ -1,7 +1,6 @@
 package com.company.sessions;
 
-import com.company.Location;
-import com.company.UserType;
+import com.company.users.UserType;
 import com.company.users.User;
 
 public interface ISessionUser {

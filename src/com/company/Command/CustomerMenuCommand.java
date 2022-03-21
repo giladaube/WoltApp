@@ -1,10 +1,10 @@
 package com.company.Command;
 
-import com.company.GUI;
+import com.company.pages.GUI;
 import com.company.pages.Pages;
 import com.company.pages.abstractPages.AFactoryPage;
 import com.company.sessions.ISession;
-import com.company.sessions.Session;
+
 import java.util.Map;
 
 public class CustomerMenuCommand implements ICommand {

@@ -1,16 +1,16 @@
-package com.company;
+package com.company.orders;
 
 
 public class Item implements IItem {
     private String name;
     private String description;
     private double price;
+
     public Item(String name, String description, double price){
         this.name=name;
         this.description=description;
         this.price=price;
-    }
-    @Override
+    } @Override
     public String getItemName() {
         return name;
     }
@@ -32,5 +32,6 @@ public class Item implements IItem {
         result.append("Description     ").append(description).append("\n");
         result.append("Price           ").append(price).append("\n");
         return result.toString();
+
     }
 }

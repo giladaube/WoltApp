@@ -1,6 +1,7 @@
-package com.company;
+package com.company.users;
 
-import com.company.users.IRealStore;
+import com.company.orders.IItem;
+import com.company.orders.IOrder;
 
 import java.util.List;
 

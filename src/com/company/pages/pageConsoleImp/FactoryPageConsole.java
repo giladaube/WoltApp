@@ -2,7 +2,7 @@ package com.company.pages.pageConsoleImp;
 
 import com.company.pages.abstractPages.*;
 import com.company.sessions.ISession;
-import com.company.UserType;
+import com.company.users.UserType;
 /**
  * Concrete Console Page Factory - Creates Console Pages that a GUI will present
  * @implNote these pages are interactive thus there's a need for an Obj to store User input

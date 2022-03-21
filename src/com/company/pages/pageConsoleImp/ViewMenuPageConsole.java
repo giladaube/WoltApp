@@ -1,6 +1,6 @@
 package com.company.pages.pageConsoleImp;
 
-import com.company.IItem;
+import com.company.orders.IItem;
 import com.company.pages.abstractPages.AMenuViewPage;
 import com.company.sessions.ISession;
 
@@ -14,11 +14,26 @@ public class ViewMenuPageConsole extends AMenuViewPage {
     }
     @Override
     public void showPage() {
-        List<IItem> items = session.getPickedStore().getItems();
+
         int i = 0;
         System.out.printf("""
                             Welcome to %s
                             """, session.getPickedStore().getStoreName());
+
+//        System.out.println("Would you like to see the full menu or make a custom order?");
+//        System.out.printf("""
+//                            [%d] Full Menu
+//                            [%d] Custom Order
+//                            """, i, i+1);
+//
+//        Scanner input = new Scanner(System.in);
+//        int selection = input.nextInt();
+//        if (selection == 1) {
+//            System.out.println("Custom order chosen");
+//        }
+//        session.setMenuSelection(selection);
+
+        List<IItem> items = session.getPickedStore().getItems();
         System.out.println("You can chose as much items as you want, simply pick a number and hit Enter:");
         System.out.println("Here is our menu:");
         System.out.println("-----------------------------------");
@@ -33,7 +48,7 @@ public class ViewMenuPageConsole extends AMenuViewPage {
             System.out.println("-----------------------------------");
         }
         System.out.println("Please pick an item by it's number");
-        System.out.println("Or chose another option:");
+        System.out.println("Or choose another option:");
         System.out.printf("""
                             [%d] When you're DONE, we will send your order right away!
                             [%d] If you want to discard this order

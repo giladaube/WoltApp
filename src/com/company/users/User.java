@@ -1,8 +1,5 @@
 package com.company.users;
 
-import com.company.Location;
-import com.company.UserType;
-
 import java.util.UUID;
 
 public class User {
