@@ -1,7 +1,6 @@
 package com.company;
 
 import com.company.strategy.PaymentStrategy;
-import com.company.users.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ public class OrderHandle implements Observable, Observer {
 
     public void addOrder(IOrder order) throws InterruptedException {
         // send the order if payment was successful
-        if(paymentHandler.payAmount(order.getPrice())){
+        if(paymentHandler.makePayment(order.getPrice())){
             orders.add(order);
             order.getStore().addOrder(order);
         }
