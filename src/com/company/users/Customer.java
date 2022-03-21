@@ -11,7 +11,6 @@ import com.company.strategy.PaymentStrategy;
 
 import java.util.List;
 
-// NEED TO ADD Observer
 public class Customer extends User implements Observer {
     private OrderHandler orderHandler;
     private PaymentMethod paymentMethod;
@@ -20,7 +19,7 @@ public class Customer extends User implements Observer {
     }
     public Customer(String name, String pass){
         super(name, pass, UserType.CUSTOMER, Location.generateRandomLocation());
-        // everyone pays with card. can get card info when sign-up...
+        // everyone pays with card. can get card info when sign-up
         paymentMethod = new CreditCardPayment();
         this.orderHandler = new OrderHandler();
     }

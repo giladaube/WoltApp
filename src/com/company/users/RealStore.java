@@ -9,14 +9,10 @@ import java.util.List;
 
 import static java.lang.Thread.sleep;
 
-// Observed by a Virtual Store? Real Store doesn't need to know about VS presenting him (decoupling)
-// maybe doesn't need to be abstract?
-
-// After implement everything here, please go back and create new RealStore at Session class, on setUserType()
 public class RealStore extends User implements IRealStore {
     protected String storeName;
-    protected String contactInfo;   // String for now, might be a class
-    protected VirtualStore virtualStore;   // remove ????
+    protected String contactInfo;
+    protected VirtualStore virtualStore;
     protected List<IOrder> orders;
     protected List<Item> items;    // list of items the store is selling
     protected double rating;
@@ -36,12 +32,10 @@ public class RealStore extends User implements IRealStore {
     public void addItem(Item item){
         items.add(item);
         // notify list changed (+ when notified someone will have to save to db..)
-
     }
 
-
     @Override
-    public IVirtualStore getVirtualStore() {  // remove ????
+    public IVirtualStore getVirtualStore() {
         return virtualStore;
     }
 
@@ -49,7 +43,6 @@ public class RealStore extends User implements IRealStore {
     public List<IItem> getItems() {
         return new ArrayList<>(items);  // give a (shallow) copy of our list
     }
-
 
     @Override
     public boolean addOrder(IOrder order) throws InterruptedException{
@@ -67,7 +60,6 @@ public class RealStore extends User implements IRealStore {
         return true;
     } // return confirmation on new order
 
-//
     @Override
     public String getContact(){
         return this.contactInfo;

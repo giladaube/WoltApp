@@ -7,7 +7,6 @@ import com.company.strategy.PaymentStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
-// NEED TO ADD Observable
 public class OrderHandler implements Observable, Observer {
     private List<IOrder> orders = new ArrayList<>();
     private PaymentStrategy paymentHandler;

@@ -9,7 +9,7 @@ public class CashPayment implements PaymentMethod {
 
     @Override
     public boolean checkValidity() {
-        // checking if card is legit...
+        // checking if card is legit
         return true;
     }
 

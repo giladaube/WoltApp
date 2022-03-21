@@ -124,7 +124,6 @@ public class FileDB implements IDatabase{
 
     private void initCustomers(String fileName){
         List<Customer> customers = new ArrayList<>();
-        // can't use the short List create + add since gson is having troubles..
         Customer c1 = new Customer("shai", "123");
         Customer c2 = new Customer("or", "456");
         Customer c3 = new Customer("gilad", "789");
