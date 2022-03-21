@@ -15,8 +15,7 @@ public class SearchStoreConsolePage extends ASearchStorePage {
                             Search Store by:
                             [0] Distance.
                             [1] Rating.
-                            [4] Back.
-                            """);
+                            [4] Back.""");
         int selection = input.nextInt();
         session.setMenuSelection(selection);
     }
