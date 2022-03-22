@@ -50,7 +50,7 @@ public class RealStore extends User implements IRealStore {
         new Thread(() -> {
             for (int i = 1; i < 4; i++) {
                   try {
-                      sleep(1500);
+                      sleep(2500);
                   } catch (InterruptedException e) {
                       e.printStackTrace();
                   }

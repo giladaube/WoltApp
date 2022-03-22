@@ -77,6 +77,11 @@ public class Order implements IOrder {
         StringBuilder result = new StringBuilder();
         result.append("-----------------------------------\n");
         result.append("Order number    [").append(orderId).append("]\n");
+        switch (this.status) {
+            case 1 -> result.append("Order Status    [Cooking...]\n");
+            case 2 -> result.append("Order Status    [In Delivery...]\n");
+            case 3 -> result.append("Order Status    [Delivered]\n");
+        }
         result.append("Items:\n");
         result.append("-----------------------------------\n");
 

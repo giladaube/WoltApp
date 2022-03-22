@@ -18,8 +18,6 @@ public class Main {
         FactoryCommand factoryCommand = new FactoryCommand(gui, session, factory);
         INavigation navigationHandler = new NavigationHandler(gui, session, factory, factoryCommand);
         navigationHandler.start();
-//        IDatabase db = FileDB.getDatabase();
-//        List<Customer> lc = db.getCustomers();
-//        System.out.println(lc.size());
+
     }
 }
